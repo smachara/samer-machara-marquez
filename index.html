@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV | Samer MACHARA MARQUEZ - Arquitecto de Software</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+    <style>
+        /* --- VARIABLES DE COLOR (Fácil de personalizar) --- */
+        :root {
+            --bg-color: #1a1a2e; /* Fondo principal oscuro */
+            --card-color: #24243e; /* Color de las "tarjetas" */
+            --primary-text-color: #e0e0e0; /* Texto principal */
+            --secondary-text-color: #a7a7c7; /* Texto secundario (fechas, subtítulos) */
+            --accent-color: #00a8cc; /* Color de acento (títulos, enlaces) */
+            --border-color: #3a3a5e;
+        }
+
+        /* --- ESTILOS GENERALES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--primary-text-color);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: white;
+        }
+        
+        /* --- COLUMNA IZQUIERDA --- */
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .profile-card {
+            background-color: var(--card-color);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .name {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .title {
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            width: 25px; /* Alineación de iconos */
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a i {
+            font-size: 2rem;
+            transition: transform 0.3s ease;
+        }
+        .social-links a:hover i {
+            transform: scale(1.2);
+        }
+
+
+        /* --- SECCIONES COMUNES --- */
+        .card {
+            background-color: var(--card-color);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        /* --- HABILIDADES (SKILLS) --- */
+        .skills-category h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-text-color);
+        }
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .skill-tag {
+            background-color: var(--border-color);
+            color: var(--primary-text-color);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        /* --- IDIOMAS, INTERESES, FORMACIÓN --- */
+        .education-item, .list-item {
+            margin-bottom: 1.5rem;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+        }
+        .education-item:last-child, .list-item:last-child {
+            margin-bottom: 0;
+        }
+        .education-item .time, .list-item i {
+            color: var(--accent-color);
+            font-size: 1.1rem; /* Adjust for better icon alignment */
+        }
+        .education-item strong {
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        .education-item span {
+            color: var(--secondary-text-color);
+        }
+        .fluency {
+            color: var(--secondary-text-color);
+            font-style: italic;
+            margin-left: 0.5rem;
+        }
+
+
+        /* --- COLUMNA DERECHA --- */
+        .right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .profile-summary p {
+            color: var(--secondary-text-color);
+        }
+
+        /* --- EXPERIENCIA --- */
+        .job {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 3px solid var(--border-color);
+            margin-bottom: 2.5rem;
+        }
+        .job:last-child {
+            margin-bottom: 0;
+        }
+
+        .job::before {
+            content: '';
+            position: absolute;
+            left: -9px; /* (width / 2) */
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            border: 2px solid var(--bg-color);
+        }
+
+        .job-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .job-company {
+            color: var(--secondary-text-color);
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+        .job-company a {
+            font-style: italic;
+        }
+
+        .job-description ul {
+            list-style: none;
+            padding-left: 0;
+            color: var(--secondary-text-color);
+        }
+        .job-description ul > li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .job-description ul > li::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            top: -2px;
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        /* --- CERTIFICADOS Y REFERENCIAS --- */
+        .certificate-item, .reference-item {
+            margin-bottom: 1.5rem;
+        }
+        .certificate-item:last-child, .reference-item:last-child {
+            margin-bottom: 0;
+        }
+        .certificate-title {
+            font-weight: 600;
+        }
+        .certificate-issuer {
+            color: var(--secondary-text-color);
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+        .reference-quote {
+            border-left: 3px solid var(--accent-color);
+            padding-left: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-text-color);
+            font-style: italic;
+        }
+        .reference-author {
+            font-weight: 600;
+            text-align: right;
+        }
+        
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 992px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 576px) {
+            .container {
+                padding: 1rem;
+            }
+            .profile-card, .card {
+                padding: 1.5rem;
+            }
+            .name {
+                font-size: 1.5rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <aside class="left-column">
+
+            <section class="profile-card">
+                <img src="assets/img/foto.png" alt="Foto de Samer Machara" class="profile-pic">
+                <h1 class="name">Samer MACHARA MARQUEZ</h1>
+                <!-- <h2 class="title">Responsable de projets Technique</h2> -->
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class='bx bxs-map'></i>
+                        <span>91000 Evry Courcouronnes Essonne FR</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class='bx bxs-envelope'></i>
+                        <a href="mailto:smachara@gmail.com">smachara@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class='bx bxs-phone'></i>
+                        <a href="tel:+33648586931">(+33) 6 48 58 69 31</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class='bx bx-globe'></i>
+                        <a href="https://ikiwisi.gitlab.io/jsonresume-theme-smachara/" target="_blank">https://ikiwisi.gitlab.io/jsonresume-theme-smachara/</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="bx bx-car"></i>
+                        <span>Permis de conduire : B, Véhicule</span>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://github.com/smachara" target="_blank" title="GitHub"><i class='bx bxl-github'></i></a>
+                    <a href="https://gitlab.com/ikiwisi" target="_blank" title="GitLab"><i class='bx bxl-gitlab'></i></a>
+                    <a href="https://linkedin.com/samer-machara" target="_blank" title="LinkedIn"><i class='bx bxl-linkedin-square'></i></a>
+                </div>
+            </section>
+
+            <section class="card">
+                <h3 class="section-title"><i class='bx bxs-graduation'></i>Formation</h3>
+                <div class="education-item">
+                    <div>
+                        <strong>Doctorat (PhD)</strong><br>
+                        <span class="secondary-text">L'Université Paris-Saclay, France.<br>oct. &nbsp;nov.</span>
+                    </div>
+                </div>
+                 <div class="education-item">
+                    <div>
+                        <strong>MASTER Science de l'informatique et communication réseaux</strong><br>
+                        <span class="secondary-text">École d'ingénieurs Institut Mines-Télécom Sud-Paris, France.<br>sept &nbsp;sept</span>
+                    </div>
+                </div>
+                 <div class="education-item">
+                    <div>
+                        <strong>Ingénieur en Sciences Informatiques</strong><br>
+                        <span class="secondary-text">Université Nueva Esparta, Caracas, Venezuela.<br>sept &nbsp;sept</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card">
+                <h3 class="section-title"><i class='bx bx-receipt'></i>Compétences</h3>
+                
+                <div class="skills-category">
+                    <h4>Gestion de projets Agile</h4>
+                    <div class="skills-list">
+                        <span class="skill-tag">Scrum (Product Owner / Scrum Master)</span>
+                        <span class="skill-tag">User Stories &amp; BDD (Gherkin)</span>
+                        <span class="skill-tag">Gestion de backlog</span>
+                        <span class="skill-tag">Sprint planning / Rétrospective</span>
+                        <span class="skill-tag">Ateliers de cadrage &amp; personas</span>
+                        <span class="skill-tag">Impact Mapping</span>
+                        <span class="skill-tag">CrowdSourcing</span>
+                        <span class="skill-tag">Méthodes de priorisation (MoSCoW, WSJF)</span>
+                    </div>
+                </div>
+                
+                <div class="skills-category">
+                    <h4>Gestion de projet traditionnel</h4>
+                    <div class="skills-list">
+                        <span class="skill-tag">Cycle en V</span>
+                        <span class="skill-tag">Diagramme de Gantt</span>
+                        <span class="skill-tag">Analyse des risques</span>
+                        <span class="skill-tag">Planification et suivi budgétaire</span>
+                        <span class="skill-tag">Gestion des ressources</span>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h4>Analyse et conception</h4>
+                    <div class="skills-list">
+                        <span class="skill-tag">Analyse des besoins</span>
+                        <span class="skill-tag">Modélisation UML</span>
+                        <span class="skill-tag">Architecture logicielle (microservices, DDD)</span>
+                        <span class="skill-tag">Spécifications fonctionnelles et techniques</span>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h4>Sécurité informatique</h4>
+                    <div class="skills-list">
+                        <span class="skill-tag">Conformité RGPD</span>
+                        <span class="skill-tag">Analyse de risques (EBIOS)</span>
+                        <span class="skill-tag">Homologation ANS</span>
+                        <span class="skill-tag">Sécurisation des API</span>
+                        <span class="skill-tag">Gestion des accès et des identités (IAM)</span>
+                        <span class="skill-tag">Cryptographie et gestion des clés</span>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h4>Logiciels de gestion de projets</h4>
+                    <div class="skills-list">
+                        <span class="skill-tag">JIRA (Admin)</span>
+                        <span class="skill-tag">Confluence(Wiki)</span>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h4>Intelligence Artificielle</h4>
+                    <div class="skills-list">
+                        <span class="skill-tag">ChatGPT / GPT-4 / Gemini</span>
+                        <span class="skill-tag">LangChain</span>
+                        <span class="skill-tag">Prompt Engineering</span>
+                        <span class="skill-tag">Automatisation avec IA</span>
+                        <span class="skill-tag">n8n + Agents IA</span>
+                        <span class="skill-tag">Intégration API IA dans des microservices</span>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h4>Logiciels</h4>
+                    <div class="skills-list">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Jenkins</span>
+                        <span class="skill-tag">Maven</span>
+                        <span class="skill-tag">SonarQube</span>
+                        <span class="skill-tag">ArgoCD</span>
+                        <span class="skill-tag">Vault</span>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h4>CMS et e-commerce</h4>
+                    <div class="skills-list">
+                        <span class="skill-tag">Wordpress</span>
+                        <span class="skill-tag">Drupal</span>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h4>Informatique - Cloud</h4>
+                    <div class="skills-list">
+                        <span class="skill-tag">Windows</span>
+                        <span class="skill-tag">Linux</span>
+                        <span class="skill-tag">Google Workspace</span>
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">Helm</span>
+                        <span class="skill-tag">ArgoCD</span>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h4>Développement Web</h4>
+                    <div class="skills-list">
+                        <span class="skill-tag">PHP/SYMFONY</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">NodeJS</span>
+                        <span class="skill-tag">Java avec Spring Boot</span>
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS/SAAS</span>
+                        <span class="skill-tag">Javascript</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">MySQL/PostgreSQL</span>
+                        <span class="skill-tag">Redis</span>
+                        <span class="skill-tag">Apache/Nginx</span>
+                        <span class="skill-tag">API REST Full</span>
+                        <span class="skill-tag">API GraphQL</span>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h4>Qualité et tests</h4>
+                    <div class="skills-list">
+                        <span class="skill-tag">Playwright</span>
+                        <span class="skill-tag">ArchUnit</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card">
+                <h3 class="section-title"><i class='bx bx-chat'></i>Langues</h3>
+                <div class="list-item">Espagnol <span class="fluency"><em>-courant</em></span></div>
+                <div class="list-item">Français <span class="fluency"><em>-courant</em></span></div>
+                <div class="list-item">Anglais <span class="fluency"><em>-courant</em></span></div>
+            </section>
+            
+            <section class="card">
+                <h3 class="section-title"><i class='bx bxs-heart'></i>Centres d'intérêt</h3>
+                <div class="list-item"><i class='bx bx-swim'></i> Natation</div>
+                <div class="list-item"><i class='bx bx-paint-roll'></i> Bricolage</div>
+                <div class="list-item"><i class='bx bxs-cube-alt'></i> Impression 3D</div>
+            </section>
+
+        </aside>
+
+        <main class="right-column">
+
+            <section class="card profile-summary">
+                <h3 class="section-title"><i class='bx bxs-user'></i>Responsable de projets Technique</h3>
+                <p>
+                    Avec plus de 15 ans d'expérience en gestion de projets IT, tant dans le secteur privé que public. Docteur en informatique, spécialiste des systèmes distribués, architectures microservices et pratiques DevOps. Pilotage technique reconnu de projets stratégiques à l'Agence du Numérique en Santé (ANS), dans un contexte Agile SCRUM. Expertise confirmée en architecture logicielle, sécurité (EBIOS, homologation ANS), coordination de sous-traitants, intégration continue, et alignement avec les référentiels ANS. Rigueur, autonomie, sens du service public et excellentes capacités de communication avec les équipes techniques et métiers.
+                </p>
+            </section>
+
+            <section class="card">
+                <h3 class="section-title"><i class='bx bxs-briefcase-alt-2'></i>Expériences Professionnelles</h3>
+                <div class="experience-list">
+                    
+                    <div class="job">
+                        <h4 class="job-title">Référent Technique – DOPS / Département Intégration</h4>
+                        <p class="job-company">févr. 2023 - aujourd'hui | Agence du Numérique en Santé (ANS) | Saint-Denis, France</p>
+                        <p>Établissement public sous tutelle du Ministère de la Santé, responsable de la transformation numérique en santé.<br><a href="https://esante.gouv.fr" target="_blank">https://esante.gouv.fr</a></p>
+                        <h4 class="job-title"><u>Mission(s) et réalisations :</u></h4>
+                        <div class="job-description">
+                            <ul>
+                                <li><strong>Responsable technique</strong> des projets FINESS et RIPSC (architecture, sécurité, validation DAT/DAL, PFC Cloud).</li>
+                                <li>Définition et application des <strong>règles d'architecture logicielle et technique ANS</strong> (modularité, port/adapter, microservices, DDD, bus de message).</li>
+                                <li>Mise en place d'<strong>indicateurs de contrôle qualité</strong>, d'outils de suivi, de processus de sécurité et de stratégie de test technique.</li>
+                                <li><strong>Coordination</strong> des acteurs internes (MOA, MOE, sécurité) et externes (éditeurs, intégrateurs, sous-traitants).</li>
+                                <li>Supervision et contribution à la <strong>documentation technique</strong> (DAT, DAL, dossiers d'installation, d'exploitation, supervision, etc.).</li>
+                                <li>Préparation, planification et suivi des <strong>mises en production</strong> et des bascules techniques.</li>
+                                <li>Conduite des travaux de <strong>mise en conformité sécurité</strong> (EBIOS, homologation ANS) pour FINESS.</li>
+                                <li><strong>Contribution au projet esante.fr</strong> : cohérence technique, coordination, environnements de test, intégration continue.</li>
+                                <li>Collaboration étroite avec le <strong>Responsable d'Intégration</strong> (N+1 : Stéphane Gaston) et les directions programmes.</li>
+                                <li>Travail en <strong>méthodologie agile</strong> (SCRUM), intégration des enablers techniques aux sprint plannings, adoption du DDD.</li>
+                                <li>Création d'une encyclopédie vivante des bonnes pratiques de développement logiciel : En parallèle de ses missions, J'initie en 2023 la création de l'encyclopédie, formalisé comme objectif individuel en 2024, regroupe les normes, les modèles, les guides, et des solutions testées dans mes projets a l'ANS (FINESS, RIPSC, etc.). </br> - Utilisation quotidienne de ces ressources pour standardiser les livrables, capitaliser les retours d'expérience et homogénéiser les pratiques au sein des projets.</br> - Objectif de long terme : adosser cette base à des agents IA pour assister les référents techniques et PO (aide à la rédaction documentaire, conformité, gestion des risques, alertes projet via dashboards)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="job">
+                        <h4 class="job-title">Chef de projet</h4>
+                        <p class="job-company">oct. 2021 - déc. 2022 | Freelance | Evry - France</p>
+                        <p>Freelance dans la gestion de projet en mode Agile (Scrum), analyse des besoins, planification, la conception de systèmes, développement, adaptation, test et maintenance.</p>
+                        <h4 class="job-title"><u>Mission(s) et réalisations :</u></h4>
+                        <div class="job-description">
+                           <ul>
+                                <li><b>Plug and Plate</b>, spécialiste du développement web pour le secteur de la restauration, offre des solutions pour la gestion des commandes, livraisons, click&collect, et autres.<br>
+                                    <ul>
+                                        <li>Cadrage et analyse des besoins métiers, rédaction des Users Stories</li>
+                                        <li>Pilotage et priorisation du Backlog</li>
+                                        <li>Accompagnement des équipes en charge des développements et priorisation des travaux</li>
+                                        <li>Organisation des travaux de recette et de validation des livraisons</li>
+                                        <li>Participation aux cérémonies Agiles</li>
+                                    </ul>
+                                    <br><a href="https://plugandplate.com" target="_blank">plugandplate.com</a>
+                                </li>
+                           </ul>
+                        </div>
+                    </div>
+
+                    <div class="job">
+                        <h4 class="job-title">Chef de projet SI</h4>
+                        <p class="job-company">oct. 2017 - janv. 2020 | Contrat Facil SAS | Paris - France</p>
+                        <p>Société dédiée à la création de solutions successorales en ligne pour les particuliers et les professionnels, par exemple la rédaction de testaments en ligne.<br><a href="https://Testamento.fr" target="_blank">https://Testamento.fr</a></p>
+                        <h4 class="job-title"><u>Mission(s) et réalisations :</u></h4>
+                        <div class="job-description">
+                            <ul>
+                                <li>Implémentation et formation de l'équipe interne dans la méthodologie Scrum.</li>
+                                <li>Gestion du projet d'industrialisation de la solution logicielle existante, basée sur une nouvelle architecture logicielle de micro-services.</li>
+                                <li>Choisir les prestataires sous-traitants pour booster le développement de la solution. Superviser les relations avec les sous-traitants, et choisir la répartition des tâches entre ressources internes et ressources externes.</li>
+                                <li>Animer les réunions de pilotage de projets basé sur la méthode Scrum. Définir le planning des tâches et leur priorité. Établir les tableaux de bord relatifs au déroulement des projets et à l'activité. Suivre les plannings de déroulement des projets. Tester les applications développées pour assurer la qualité du produit.</li>
+                                <li>Administration Jira, Confluence</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="job">
+                        <h4 class="job-title">Ingénieur Plateforme Cloud</h4>
+                        <p class="job-company">mars. 2016 - sept. 2017 | École d'ingénieurs Institut Mines-Télécom Sud-Paris et CNRS | Evry - France</p>
+                        <p>Grand école d'ingénieurs publique reconnue au plus haut niveau de la science et du numérique avec le Centre National de la Recherche Scientifique.</p>
+                        <h4 class="job-title"><u>Mission(s) et réalisations :</u></h4>
+                        <div class="job-description">
+                           <ul>
+                                <li>Consolider la gestion et l'administration de la plateforme Cloud du laboratoire SAMOVAR-CNRS et de l'institut Mines-Télécom.</li>
+                                <li>Coordination du projet de déménagement de la plateforme de cloud computing (Data Center) de l'ancien bâtiment vers le nouveau centre ETOILE.</li>
+                                <li>Gestion du projet de centralisation documentaire de la plateforme cloud.</li>
+                           </ul>
+                        </div>
+                    </div>
+
+                    <div class="job">
+                        <h4 class="job-title">Ingénieur recherche et développement</h4>
+                        <p class="job-company">oct. 2011 - oct. 2014 | École d'ingénieurs Institut Mines-Télécom Sud-Paris | Evry - France</p>
+                        <p>L'institut Mines-Télécom Sud-Paris est une école d'ingénieurs publique reconnue au plus haut niveau de la science et du numérique.</p>
+                        <h4 class="job-title"><u>Mission(s) et réalisations :</u></h4>
+                        <div class="job-description">
+                           <ul>
+                                <li>Conception des modèles pour la gestion de la qualité de l'information et respect de la vie privée dans l'Internet des objets.</li>
+                                <li>Gestion et suivi du projet de recherche de façon autonome.</li>
+                                <li>Définition des modalités d'expérimentation.</li>
+                                <li>Organisation de réunions d'état d'avancement de projets.</li>
+                                <li>Rédaction de notes de synthèse, rapport scientifique pour des conférences et rapports de thèse.</li>
+                           </ul>
+                        </div>
+                    </div>
+
+                    <div class="job">
+                        <h4 class="job-title">Chef de projet SI</h4>
+                        <p class="job-company">nov. 2004 - sept. 2009 | Tagua Center S.A. | Caracas - Venezuela</p>
+                        <p>Centres de bien-être & beauté avec 3 établissements</p>
+                        <h4 class="job-title"><u>Mission(s) et réalisations :</u></h4>
+                        <div class="job-description">
+                           <ul>
+                                <li>Coordination d'une équipe de travail de cinq personnes et des différents prestataires externes dans le cadre du développement, du maintien et du support du système administratif et du système des réservations de rendez-vous.</li>
+                                <li>Analyse des besoins. Rédaction des cahiers des charges. Établissement du planning, définition des ressources, découpage du projet et spécification du budget.</li>
+                                <li>Suivi d'avancement des prestataires externes.</li>
+                                <li>Définition des tests techniques, fonctionnelles et métier.</li>
+                                <li>Accompagnement des utilisateurs lors de la mise en service du système.</li>
+                                <li>Documentation du projet.</li>
+                           </ul>
+                        </div>
+                    </div>
+
+                    <div class="job">
+                        <h4 class="job-title">Analyste Concepteur Solutions Informatique</h4>
+                        <p class="job-company">déc. 2000 - nov. 2004 | Zurich Seguros | Caracas - Venezuela</p>
+                        <p>Zurich est l'un des principaux groupes d'assurance internationaux du monde, Il propose une large gamme de solutions d'assurance vie et non-vie pour les particuliers, les professionnels, les PME et les grandes entreprises.</p>
+                        <h4 class="job-title"><u>Mission(s) et réalisations :</u></h4>
+                        <div class="job-description">
+                           <ul>
+                                <li>Organisation et planification de la mise en œuvre du projet banque-assurance.</li>
+                                <li>Élaboration des spécifications techniques générales du projet sur la base du cahier des charges.</li>
+                                <li>Mise en place des structures du projet et d'outils de pilotage.</li>
+                                <li>Organisation et animation des comités de pilotage auprès des décideurs.</li>
+                                <li>Transfert régulier à la maîtrise d'ouvrage des tableaux de bord sur l'état d'avancement du projet.</li>
+                                <li>Supervision et coordination du travail de l'ensemble des acteurs internes et externes.</li>
+                                <li>Validation des livrables.</li>
+                           </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="card">
+                 <h3 class="section-title"><i class='bx bxs-certification'></i>Certificats</h3>
+                 <div class="certificate-item">
+                    <p class="certificate-title">Elastic Observability Engineer | nov. 2024 – déc. 2024</p>
+                    <p class="certificate-issuer">PLB Consultant (Formation intra-entreprise)</p>
+                 </div>
+                 <div class="certificate-item">
+                    <p class="certificate-title">Optimiser son temps, ses priorités sans stress | déc. 2024</p>
+                    <p class="certificate-issuer">Efficior (Formation intra-entreprise)</p>
+                 </div>
+                 <div class="certificate-item">
+                    <p class="certificate-title">Sauveteur secouriste du travail (SST) | sept. 2024</p>
+                    <p class="certificate-issuer">Apave (Formation intra-entreprise)</p>
+                 </div>
+                 <div class="certificate-item">
+                    <p class="certificate-title">Réaliser une architecture microservices en Java | juin 2024</p>
+                    <p class="certificate-issuer">ORSYS (inter-entreprise, formation CEGOS)</p>
+                 </div>
+                 <div class="certificate-item">
+                    <p class="certificate-title">Améliorer sa communication dans ses relations professionnelles | janv. 2024</p>
+                    <p class="certificate-issuer">CEGOS (Formation intra-entreprise)</p>
+                 </div>
+                 <div class="certificate-item">
+                    <p class="certificate-title">Webinaire : Décider et concevoir une réunion : se poser les bonnes questions | nov. 2023</p>
+                    <p class="certificate-issuer">École internationale de réuniologie</p>
+                 </div>
+                 <div class="certificate-item">
+                    <p class="certificate-title">Manager une équipe - niveau 1 | oct. 2023</p>
+                    <p class="certificate-issuer">CEGOS (Formation intra-entreprise)</p>
+                 </div>
+                 <div class="certificate-item">
+                    <p class="certificate-title">Conduite des projets informatiques | sept. 2011 – févr. 2012</p>
+                    <p class="certificate-issuer">Formation certifiant Conservatoire National des Arts et Métiers</p>
+                 </div>
+                 <div class="certificate-item">
+                    <p class="certificate-title">Cours de productivité personnelle à l'ère numérique | 2016</p>
+                    <p class="certificate-issuer">Fundacion Santa Maria la Real, Espagne</p>
+                 </div>
+                 <div class="certificate-item">
+                    <p class="certificate-title">Cours de Web Analytics | 2015</p>
+                    <p class="certificate-issuer">Escuela de Organización Industrial, Espagne<br><a href="https://sites.google.com/a/learning.eoi.es/mooc-analitica-web/" target="_blank">https://sites.google.com/a/learning.eoi.es/mooc-analitica-web/</a></p>
+                 </div>
+                 <div class="certificate-item">
+                    <p class="certificate-title">Cours de Cloud Computing | 2015</p>
+                    <p class="certificate-issuer">Escuela de Organización Industrial, Espagne<br><a href="https://sites.google.com/a/learning.eoi.es/mooc-cloudcomputing/modulo-1-fundamentos-de-la-tecnologia-cloud-yde-sus-servicios-asociados" target="_blank">https://sites.google.com/a/learning.eoi.es/mooc-cloudcomputing/modulo-1-fundamentos-de-la-tecnologia-cloud-yde-sus-servicios-asociados</a></p>
+                 </div>
+                 <div class="certificate-item">
+                    <p class="certificate-title">Cours de E-commerce | 2015</p>
+                    <p class="certificate-issuer">Escuela de Organización Industrial, Espagne<br><a href="https://sites.google.com/a/learning.eoi.es/mooc-ecommerce/" target="_blank">https://sites.google.com/a/learning.eoi.es/mooc-ecommerce/</a></p>
+                 </div>
+                 <div class="certificate-item">
+                    <p class="certificate-title">Cours de base en marketing numérique | 2015</p>
+                    <p class="certificate-issuer">Interactive Advertising Bureau, Espagne<br><a href="https://sites.google.com/site/tucursomarketingdigital/coleccionmarketing-digital" target="_blank">https://sites.google.com/site/tucursomarketingdigital/coleccionmarketing-digital</a></p>
+                 </div>
+            </section>
+            
+            <section class="card">
+                <h3 class="section-title"><i class='bx bxs-quote-alt-left'></i>Références</h3>
+                <div class="reference-item">
+                    <blockquote class="reference-quote">
+                        Il est très compétent pour comprendre la portée et les enjeux des produits et des services et est à l'aise avec les principes de gestion de projet. Il a également démontré sa capacité à collaborer avec les autres membres de l'équipe et à communiquer avec les clients.
+                    </blockquote>
+                    <p class="reference-author">– Jorge Alzualde, Project Director et Co-Founder de Bucares SARL.</p>
+                </div>
+                 <div class="reference-item">
+                    <blockquote class="reference-quote">
+                        A son arrivée, Monsieur Machara Marquez a fait preuve d'une grande implication, et a été un véritable apport au niveau organisationnel notamment en mettant en place les process nécessaires. Par ailleurs il a parfaitement su identifier et mettre en place une sous-traitance R&amp;D avec une équipe à distance.
+                    </blockquote>
+                    <p class="reference-author">– Virgile Delporte, Représentant du Président Workogether SARL.</p>
+                </div>
+                 <div class="reference-item">
+                    <blockquote class="reference-quote">
+                        Relativement à ses études, Samer a été un élève brillant qui avait déjà une expérience en programmation et qui a réussi à acquérir les connaissances et les technologies que j'ai enseignées. Il était l'un des meilleurs élèves de sa promotion comme l'attestent ses résultats ... Son travail dans mon équipe a nécessité une grande adaptation et l'acquisition de connaissances nouvelles. ...Samer a très bien pris son sujet en main, il s'est bien intégré à notre équipe pendant son projet.
+                    </blockquote>
+                    <p class="reference-author">– Christian Bac, Enseignant-chercheur Télécom SudParis.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+</body>
+</html>
