@@ -12,14 +12,24 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 
     <style>
-        /* --- VARIABLES DE COLOR (Fácil de personalizar) --- */
+        /* --- VARIABLES DE COLOR (Modo Oscuro por defecto) --- */
         :root {
-            --bg-color: #1a1a2e; /* Fondo principal oscuro */
-            --card-color: #24243e; /* Color de las "tarjetas" */
-            --primary-text-color: #e0e0e0; /* Texto principal */
-            --secondary-text-color: #a7a7c7; /* Texto secundario (fechas, subtítulos) */
-            --accent-color: #00a8cc; /* Color de acento (títulos, enlaces) */
+            --bg-color: #1a1a2e;
+            --card-color: #24243e;
+            --primary-text-color: #e0e0e0;
+            --secondary-text-color: #a7a7c7;
+            --accent-color: #00a8cc;
             --border-color: #3a3a5e;
+        }
+
+        /* --- VARIABLES DE COLOR (Modo Claro) --- */
+        body.light-theme {
+            --bg-color: #f0f2f5; /* Fondo claro */
+            --card-color: #ffffff; /* Tarjetas blancas */
+            --primary-text-color: #333333; /* Texto oscuro */
+            --secondary-text-color: #555555; /* Texto secundario más oscuro */
+            --accent-color: #007bb5; /* Azul más clásico para el modo claro */
+            --border-color: #cccccc;
         }
 
         /* --- ESTILOS GENERALES --- */
@@ -39,26 +49,16 @@
             color: var(--primary-text-color);
             line-height: 1.6;
             font-size: 16px;
+            transition: background-color 0.3s, color 0.3s; /* Transición suave para el cambio de tema */
         }
 
         .container {
             max-width: 1200px;
             margin: 2rem auto;
             padding: 2rem;
-            display: grid;
-            grid-template-columns: 1fr; /* Default: una columna para móviles */
+            display: flex; /* Por defecto, las secciones se apilan (modo móvil/PDF) */
+            flex-direction: column;
             gap: 2rem;
-            /* Definimos las áreas para facilitar el reordenamiento */
-            grid-template-areas:
-                "profile"
-                "summary"
-                "experience"
-                "education"
-                "skills"
-                "languages"
-                "interests"
-                "certificates"
-                "references";
         }
 
         a {
@@ -68,7 +68,7 @@
         }
 
         a:hover {
-            color: white;
+            color: var(--primary-text-color); /* Cambia al color de texto principal en hover */
         }
         
         /* --- SECCIONES COMUNES (Todas son 'cards' ahora) --- */
@@ -77,6 +77,7 @@
             padding: 2rem;
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: background-color 0.3s, box-shadow 0.3s; /* Transición suave para el cambio de tema */
         }
 
         .section-title {
@@ -89,11 +90,11 @@
             display: flex;
             align-items: center;
             gap: 0.75rem;
+            transition: color 0.3s, border-color 0.3s; /* Transición suave para el cambio de tema */
         }
 
         /* --- PERFIL (La tarjeta principal) --- */
         .profile-card {
-            grid-area: profile;
             text-align: center;
         }
 
@@ -104,6 +105,7 @@
             object-fit: cover;
             border: 5px solid var(--accent-color);
             margin-bottom: 1rem;
+            transition: border-color 0.3s; /* Transición suave para el cambio de tema */
         }
 
         .name {
@@ -117,6 +119,7 @@
             color: var(--accent-color);
             font-weight: 400;
             margin-bottom: 1.5rem;
+            transition: color 0.3s; /* Transición suave para el cambio de tema */
         }
 
         .contact-info {
@@ -138,6 +141,7 @@
             font-size: 1.5rem;
             color: var(--accent-color);
             width: 25px; /* Alineación de iconos */
+            transition: color 0.3s; /* Transición suave para el cambio de tema */
         }
         
         .social-links {
@@ -149,29 +153,25 @@
 
         .social-links a i {
             font-size: 2rem;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, color 0.3s; /* Transición suave para el cambio de tema */
         }
         .social-links a:hover i {
-            transform: scale(1.2);
+            transform: scale(1.1);
         }
 
         /* --- RESUMEN PROFESIONAL --- */
-        .profile-summary {
-            grid-area: summary;
-        }
         .profile-summary p {
             color: var(--secondary-text-color);
+            transition: color 0.3s; /* Transición suave para el cambio de tema */
         }
 
         /* --- EXPERIENCIA --- */
-        .experience-section {
-            grid-area: experience;
-        }
         .job {
             position: relative;
             padding-left: 2rem;
             border-left: 3px solid var(--border-color);
             margin-bottom: 2.5rem;
+            transition: border-color 0.3s; /* Transición suave para el cambio de tema */
         }
         .job:last-child {
             margin-bottom: 0;
@@ -187,6 +187,7 @@
             background-color: var(--accent-color);
             border-radius: 50%;
             border: 2px solid var(--bg-color);
+            transition: background-color 0.3s, border-color 0.3s; /* Transición suave para el cambio de tema */
         }
 
         .job-title {
@@ -198,6 +199,7 @@
             color: var(--secondary-text-color);
             font-weight: 400;
             margin-bottom: 1rem;
+            transition: color 0.3s; /* Transición suave para el cambio de tema */
         }
         .job-company a {
             font-style: italic;
@@ -207,6 +209,7 @@
             list-style: none;
             padding-left: 0;
             color: var(--secondary-text-color);
+            transition: color 0.3s; /* Transición suave para el cambio de tema */
         }
         .job-description ul > li {
             position: relative;
@@ -221,12 +224,10 @@
             color: var(--accent-color);
             font-size: 1.5rem;
             font-weight: 600;
+            transition: color 0.3s; /* Transición suave para el cambio de tema */
         }
 
         /* --- FORMACIÓN --- */
-        .education-section {
-            grid-area: education;
-        }
         .education-item {
             margin-bottom: 1.5rem;
         }
@@ -239,18 +240,17 @@
         }
         .education-item span {
             color: var(--secondary-text-color);
+            transition: color 0.3s; /* Transición suave para el cambio de tema */
         }
 
         /* --- HABILIDADES (SKILLS) --- */
-        .skills-section {
-            grid-area: skills;
-        }
         .skills-category h4 {
             font-size: 1rem;
             font-weight: 600;
             margin-top: 1.5rem;
             margin-bottom: 1rem;
             color: var(--secondary-text-color);
+            transition: color 0.3s; /* Transición suave para el cambio de tema */
         }
         .skills-list {
             display: flex;
@@ -263,12 +263,10 @@
             padding: 0.4rem 0.8rem;
             border-radius: 20px;
             font-size: 0.85rem;
+            transition: background-color 0.3s, color 0.3s; /* Transición suave para el cambio de tema */
         }
 
         /* --- IDIOMAS --- */
-        .languages-section {
-            grid-area: languages;
-        }
         .languages-list-item {
             margin-bottom: 0.5rem;
         }
@@ -279,12 +277,10 @@
             color: var(--secondary-text-color);
             font-style: italic;
             margin-left: 0.5rem;
+            transition: color 0.3s; /* Transición suave para el cambio de tema */
         }
 
         /* --- INTERESES --- */
-        .interests-section {
-            grid-area: interests;
-        }
         .interests-list {
             display: flex;
             flex-wrap: wrap;
@@ -296,17 +292,16 @@
             align-items: center;
             gap: 0.5rem;
             color: var(--secondary-text-color);
+            transition: color 0.3s; /* Transición suave para el cambio de tema */
         }
         .interest-item i {
             font-size: 1.5rem;
             color: var(--accent-color);
+            transition: color 0.3s; /* Transición suave para el cambio de tema */
         }
 
 
         /* --- CERTIFICADOS --- */
-        .certificates-section {
-            grid-area: certificates;
-        }
         .certificate-item {
             margin-bottom: 1.5rem;
         }
@@ -320,12 +315,10 @@
             color: var(--secondary-text-color);
             font-style: italic;
             font-size: 0.9rem;
+            transition: color 0.3s; /* Transición suave para el cambio de tema */
         }
 
         /* --- REFERENCIAS --- */
-        .references-section {
-            grid-area: references;
-        }
         .reference-item {
             margin-bottom: 1.5rem;
         }
@@ -338,6 +331,7 @@
             margin-bottom: 0.5rem;
             color: var(--secondary-text-color);
             font-style: italic;
+            transition: border-color 0.3s, color 0.3s; /* Transición suave para el cambio de tema */
         }
         .reference-author {
             font-weight: 600;
@@ -347,43 +341,35 @@
         /* --- RESPONSIVE DESIGN (Para 2 columnas en desktop) --- */
         @media (min-width: 992px) {
             .container {
+                display: grid; /* Cambiar a grid para 2 columnas en desktop */
                 grid-template-columns: 1fr 2fr;
+                grid-template-rows: auto; /* Dejar que las filas se ajusten automáticamente */
+                gap: 2rem;
+                /* Definir áreas para posicionamiento explícito en desktop */
                 grid-template-areas:
                     "profile summary"
-                    "profile experience"
                     "education experience"
                     "skills experience"
                     "languages certificates"
                     "interests references";
             }
 
-            /* Aseguramos que la columna izquierda y derecha se "peguen" a sus áreas */
+            /* Asignar cada sección a su área de grid */
+            .profile-card { grid-area: profile; }
+            .profile-summary { grid-area: summary; }
+            .experience-section { grid-area: experience; }
+            .education-section { grid-area: education; }
+            .skills-section { grid-area: skills; }
+            .languages-section { grid-area: languages; }
+            .interests-section { grid-area: interests; }
+            .certificates-section { grid-area: certificates; }
+            .references-section { grid-area: references; }
+
+            /* Ajustes específicos de margen/padding para las áreas en desktop si es necesario */
             .profile-card {
-                grid-area: profile;
-            }
-            .profile-summary {
-                grid-area: summary;
-            }
-            .experience-section {
-                grid-area: experience;
-            }
-            .education-section {
-                grid-area: education;
-            }
-            .skills-section {
-                grid-area: skills;
-            }
-            .languages-section {
-                grid-area: languages;
-            }
-            .interests-section {
-                grid-area: interests;
-            }
-            .certificates-section {
-                grid-area: certificates;
-            }
-            .references-section {
-                grid-area: references;
+                 /* Esto asegura que el perfil ocupe su área en la parte superior izquierda */
+                 align-self: start;
+                 justify-self: stretch;
             }
         }
 
@@ -392,21 +378,124 @@
             .container {
                 padding: 1rem;
             }
-            .profile-card, .card {
+            .card {
                 padding: 1.5rem;
             }
             .name {
                 font-size: 1.5rem;
             }
         }
+
+        /* --- BOTONES FLOTANTES --- */
+        .floating-buttons {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .floating-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.1);
+            background-color: var(--primary-text-color); /* Un color que contraste para hover */
+            color: var(--accent-color);
+        }
+
+        /* --- ESTILOS PARA IMPRESIÓN (PDF y Print Media) --- */
+        @media print {
+            /* Forzar el tema claro para impresión */
+            body {
+                background-color: #ffffff !important;
+                color: #000000 !important;
+                -webkit-print-color-adjust: exact; /* Para Chrome/Safari */
+                print-color-adjust: exact; /* Estándar */
+            }
+            .card {
+                background-color: #ffffff !important;
+                box-shadow: none !important;
+                border: 1px solid #eee; /* Borde suave para las tarjetas */
+            }
+            .section-title {
+                color: #000000 !important; /* Títulos negros */
+                border-bottom-color: #bbbbbb !important; /* Borde más suave */
+            }
+            a {
+                color: #0000ff !important; /* Enlaces azules para impresión */
+                text-decoration: underline !important;
+            }
+            .profile-pic {
+                border-color: #cccccc !important; /* Borde más suave para la foto */
+            }
+            .contact-item i, .interests-item i, .job-description ul > li::before {
+                color: #555555 !important; /* Iconos y marcadores en gris oscuro */
+            }
+            .job, .reference-quote {
+                border-left-color: #cccccc !important; /* Líneas de tiempo y citas más suaves */
+            }
+            .floating-buttons {
+                display: none !important; /* Ocultar botones en la impresión */
+            }
+            /* Asegurar que las habilidades se vean bien en modo impresión */
+            .skill-tag {
+                background-color: #e0e0e0 !important;
+                color: #333333 !important;
+                border: 1px solid #ccc !important;
+            }
+
+            /* --- Ajustes CRÍTICOS para el flujo de página en PDF --- */
+            .container {
+                display: flex !important; /* Usar flexbox para asegurar el orden lineal */
+                flex-direction: column !important;
+                gap: 1.5cm !important; /* Espacio entre secciones para impresión */
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 0 15mm !important; /* Márgenes para el PDF (ajustados para mayor espacio) */
+                box-sizing: border-box !important;
+            }
+            .card {
+                margin-bottom: 0 !important; /* Eliminamos el margen inferior si ya lo gestiona el gap del container */
+                page-break-inside: avoid !important; /* Evitar que las secciones se corten */
+                break-inside: avoid !important; /* Para algunas versiones de navegadores */
+                box-sizing: border-box !important; /* Asegurar el padding */
+            }
+            .job {
+                page-break-inside: avoid !important; /* Evitar que los trabajos individuales se corten */
+                break-inside: avoid !important;
+            }
+            /* Asegurar que el contenido de texto no se desborde */
+            h1, h2, h3, h4, h5, h6, p, ul, ol, table, blockquote {
+                max-width: 100% !important;
+                overflow: visible !important;
+                word-wrap: break-word !important; /* Evitar desbordamiento de palabras largas */
+            }
+        }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <div class="container" id="cv-content">
         <section class="card profile-card">
             <img src="assets/img/foto.png" alt="Foto de Samer Machara" class="profile-pic">
             <h1 class="name">Samer MACHARA MARQUEZ</h1>
+            
             <div class="contact-info">
                 <div class="contact-item">
                     <i class='bx bxs-map'></i>
@@ -823,5 +912,82 @@
         </section>
     </div>
 
+    <div class="floating-buttons">
+        <button id="print-cv-btn" class="floating-btn" title="Imprimir o Guardar como PDF">
+            <i class='bx bxs-printer'></i>
+        </button>
+        <button id="theme-toggle" class="floating-btn" title="Cambiar Tema">
+            <i class='bx bx-moon'></i>
+        </button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const printCvBtn = document.getElementById('print-cv-btn'); // Botón de imprimir
+            const body = document.body;
+
+            // Cargar el tema guardado o establecer el modo oscuro por defecto
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                body.classList.add(savedTheme);
+                // Actualizar el icono del botón de tema
+                if (savedTheme === 'light-theme') {
+                    themeToggleBtn.querySelector('i').classList.replace('bx-moon', 'bx-sun');
+                } else {
+                    themeToggleBtn.querySelector('i').classList.replace('bx-sun', 'bx-moon');
+                }
+            } else {
+                body.classList.add('dark-theme'); // Establecer dark-theme por defecto si no hay preferencia
+                themeToggleBtn.querySelector('i').classList.add('bx-moon');
+            }
+
+            // Función para alternar el tema
+            themeToggleBtn.addEventListener('click', () => {
+                if (body.classList.contains('dark-theme')) {
+                    body.classList.remove('dark-theme');
+                    body.classList.add('light-theme');
+                    localStorage.setItem('theme', 'light-theme');
+                    themeToggleBtn.querySelector('i').classList.replace('bx-moon', 'bx-sun');
+                } else {
+                    body.classList.remove('light-theme');
+                    body.classList.add('dark-theme');
+                    localStorage.setItem('theme', 'dark-theme');
+                    themeToggleBtn.querySelector('i').classList.replace('bx-sun', 'bx-moon');
+                }
+            });
+
+            // Función para abrir el diálogo de impresión
+            printCvBtn.addEventListener('click', () => {
+                // Antes de imprimir, nos aseguramos de que el tema claro esté activo temporalmente
+                // para que coincida con los estilos @media print, aunque el navegador debería hacerlo solo.
+                const isDark = body.classList.contains('dark-theme');
+                if (isDark) {
+                    body.classList.remove('dark-theme');
+                    body.classList.add('light-theme');
+                }
+
+                window.print(); // Abre el diálogo de impresión del navegador
+
+                // Si el tema original era oscuro, lo restauramos después de que se cierre el diálogo de impresión.
+                // El evento 'afterprint' es ideal para esto.
+                window.addEventListener('afterprint', () => {
+                    if (isDark) {
+                        body.classList.remove('light-theme');
+                        body.classList.add('dark-theme');
+                    }
+                }, { once: true }); // El listener se ejecuta solo una vez.
+
+                // Como fallback por si 'afterprint' no funciona en algún navegador,
+                // restauramos el tema después de un pequeño retraso.
+                 if (isDark && !window.matchMedia('print').matches) {
+                     setTimeout(() => {
+                        body.classList.remove('light-theme');
+                        body.classList.add('dark-theme');
+                     }, 100);
+                 }
+            });
+        });
+    </script>
 </body>
 </html>
