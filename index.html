@@ -14,7 +14,6 @@
     <style>
         /* --- VARIABLES DE COLOR (Modo Oscuro por defecto) --- */
         :root {
-            --header-height: 3.5rem;
             --bg-color: #1a1a2e;
             --card-color: #24243e;
             --primary-text-color: #e0e0e0;
@@ -25,11 +24,11 @@
 
         /* --- VARIABLES DE COLOR (Modo Claro) --- */
         body.light-theme {
-            --bg-color: #f0f2f5; /* Fondo claro */
-            --card-color: #ffffff; /* Tarjetas blancas */
-            --primary-text-color: #333333; /* Texto oscuro */
-            --secondary-text-color: #555555; /* Texto secundario más oscuro */
-            --accent-color: #007bb5; /* Azul más clásico para el modo claro */
+            --bg-color: #f0f2f5;
+            --card-color: #ffffff;
+            --primary-text-color: #333333;
+            --secondary-text-color: #555555;
+            --accent-color: #007bb5;
             --border-color: #cccccc;
         }
 
@@ -53,91 +52,6 @@
             transition: background-color 0.3s, color 0.3s;
         }
 
-        /* --- NAVEGACIÓN --- */
-        .main-header {
-            position: sticky;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: var(--card-color);
-            z-index: 1001;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            transition: background-color 0.3s;
-        }
-
-        .nav {
-            height: var(--header-height);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        .nav-logo {
-            font-weight: 600;
-            color: var(--primary-text-color);
-        }
-
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-        
-        .nav-list {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-link {
-            color: var(--secondary-text-color);
-            font-weight: 400;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
-
-        .nav-link:hover, .nav-link.active-link {
-            color: var(--accent-color);
-        }
-
-        .nav-toggle {
-            font-size: 1.5rem;
-            cursor: pointer;
-            display: none; /* Oculto en desktop */
-        }
-        
-        /* --- ESTILOS RESPONSIVOS PARA LA NAVEGACIÓN --- */
-        @media screen and (max-width: 991px) {
-            .nav-toggle {
-                display: block; /* Visible en móvil */
-            }
-
-            .nav-menu {
-                position: absolute;
-                top: var(--header-height);
-                left: -100%;
-                width: 100%;
-                background-color: var(--card-color);
-                padding: 1.5rem 0;
-                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-                transition: left 0.4s ease;
-            }
-
-            .nav-list {
-                flex-direction: column;
-                align-items: center;
-                gap: 1.5rem;
-            }
-            
-            /* Clase para mostrar el menú móvil */
-            .show-menu {
-                left: 0;
-            }
-        }
-
         .container {
             max-width: 1200px;
             margin: 2rem auto;
@@ -146,10 +60,9 @@
             flex-direction: column;
             gap: 2rem;
         }
-
+        
         section {
-            padding-top: calc(var(--header-height) + 1rem);
-            margin-top: calc(-1 * (var(--header-height) + 1rem));
+            scroll-margin-top: 2rem;
         }
 
         a {
@@ -162,319 +75,67 @@
             color: var(--primary-text-color);
         }
         
-        /* --- SECCIONES COMUNES (Todas son 'cards' ahora) --- */
-        .card {
-            background-color: var(--card-color);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            transition: background-color 0.3s, box-shadow 0.3s;
+        /* --- NAVEGACIÓN FLOTANTE DE ESCRITORIO --- */
+        .desktop-nav {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            z-index: 1001;
+            display: none; /* Oculto por defecto, se muestra en media query */
         }
-
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--accent-color);
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            transition: color 0.3s, border-color 0.3s;
-        }
-
-        /* --- PERFIL (La tarjeta principal) --- */
-        .profile-card {
-            text-align: center;
-        }
-
-        .profile-pic {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid var(--accent-color);
-            margin-bottom: 1rem;
-            transition: border-color 0.3s;
-        }
-
-        .name {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 0.25rem;
-        }
-
-        .title {
-            font-size: 1.1rem;
-            color: var(--accent-color);
-            font-weight: 400;
-            margin-bottom: 1.5rem;
-            transition: color 0.3s;
-        }
-
-        .contact-info {
+        .desktop-nav .nav-list {
+            list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
-            margin-top: 1.5rem;
+            gap: 1rem;
         }
-
-        .contact-item {
+        .desktop-nav .nav-link {
+            position: relative;
             display: flex;
             align-items: center;
-            gap: 1rem;
-            text-align: left;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-item i {
-            font-size: 1.5rem;
-            color: var(--accent-color);
-            width: 25px; /* Alineación de iconos */
-            transition: color 0.3s;
-        }
-        
-        .social-links {
-            display: flex;
             justify-content: center;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
+            width: 50px;
+            height: 50px;
+            background-color: var(--card-color);
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: background-color 0.3s, transform 0.2s;
         }
-
-        .social-links a i {
-            font-size: 2rem;
-            transition: transform 0.3s ease, color 0.3s;
-        }
-        .social-links a:hover i {
+        .desktop-nav .nav-link:hover {
             transform: scale(1.1);
         }
-
-        /* --- RESUMEN PROFESIONAL --- */
-        .profile-summary p {
-            color: var(--secondary-text-color);
-            transition: color 0.3s;
-        }
-
-        /* --- EXPERIENCIA --- */
-        .job {
-            position: relative;
-            padding-left: 2rem;
-            border-left: 3px solid var(--border-color);
-            margin-bottom: 2.5rem;
-            transition: border-color 0.3s;
-        }
-        .job:last-child {
-            margin-bottom: 0;
-        }
-
-        .job::before {
-            content: '';
-            position: absolute;
-            left: -9px;
-            top: 5px;
-            width: 15px;
-            height: 15px;
-            background-color: var(--accent-color);
-            border-radius: 50%;
-            border: 2px solid var(--bg-color);
-            transition: background-color 0.3s, border-color 0.3s;
-        }
-
-        .job-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-        }
-
-        .job-company {
-            color: var(--secondary-text-color);
-            font-weight: 400;
-            margin-bottom: 1rem;
-            transition: color 0.3s;
-        }
-        .job-company a {
-            font-style: italic;
-        }
-
-        .job-description ul {
-            list-style: none;
-            padding-left: 0;
-            color: var(--secondary-text-color);
-            transition: color 0.3s;
-        }
-        .job-description ul > li {
-            position: relative;
-            padding-left: 1.5rem;
-            margin-bottom: 0.75rem;
-        }
-        .job-description ul > li::before {
-            content: '›';
-            position: absolute;
-            left: 0;
-            top: -2px;
-            color: var(--accent-color);
+        .desktop-nav .nav-link i {
             font-size: 1.5rem;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        /* --- FORMACIÓN --- */
-        .education-item {
-            margin-bottom: 1.5rem;
-        }
-        .education-item:last-child {
-            margin-bottom: 0;
-        }
-        .education-item strong {
-            display: block;
-            margin-bottom: 0.25rem;
-        }
-        .education-item span {
             color: var(--secondary-text-color);
             transition: color 0.3s;
         }
-
-        /* --- HABILIDADES (SKILLS) --- */
-        .skills-category h4 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-top: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--secondary-text-color);
-            transition: color 0.3s;
+        .desktop-nav .nav-link:hover i,
+        .desktop-nav .nav-link.active-link i {
+            color: var(--accent-color);
         }
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-        .skill-tag {
-            background-color: var(--border-color);
+        .desktop-nav .nav-text {
+            position: absolute;
+            top: 50%;
+            right: 120%; /* Posiciona el texto a la izquierda del icono */
+            transform: translateY(-50%);
+            background-color: var(--card-color);
             color: var(--primary-text-color);
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            transition: background-color 0.3s, color 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            white-space: nowrap;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+        .desktop-nav .nav-link:hover .nav-text {
+            opacity: 1;
+            visibility: visible;
         }
 
-        /* --- IDIOMAS --- */
-        .languages-list-item {
-            margin-bottom: 0.5rem;
-        }
-        .languages-list-item:last-child {
-            margin-bottom: 0;
-        }
-        .fluency {
-            color: var(--secondary-text-color);
-            font-style: italic;
-            margin-left: 0.5rem;
-            transition: color 0.3s;
-        }
-
-        /* --- INTERESES --- */
-        .interests-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: flex-start;
-        }
-        .interest-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--secondary-text-color);
-            transition: color 0.3s;
-        }
-        .interest-item i {
-            font-size: 1.5rem;
-            color: var(--accent-color);
-            transition: color 0.3s;
-        }
-
-
-        /* --- CERTIFICADOS --- */
-        .certificate-item {
-            margin-bottom: 1.5rem;
-        }
-        .certificate-item:last-child {
-            margin-bottom: 0;
-        }
-        .certificate-title {
-            font-weight: 600;
-        }
-        .certificate-issuer {
-            color: var(--secondary-text-color);
-            font-style: italic;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
-
-        /* --- REFERENCIAS --- */
-        .reference-item {
-            margin-bottom: 1.5rem;
-        }
-        .reference-item:last-child {
-            margin-bottom: 0;
-        }
-        .reference-quote {
-            border-left: 3px solid var(--accent-color);
-            padding-left: 1rem;
-            margin-bottom: 0.5rem;
-            color: var(--secondary-text-color);
-            font-style: italic;
-            transition: border-color 0.3s, color 0.3s;
-        }
-        .reference-author {
-            font-weight: 600;
-            text-align: right;
-        }
-        
-        /* --- RESPONSIVE DESIGN (Para 2 columnas en desktop) --- */
-        @media (min-width: 992px) {
-            .container {
-                display: grid;
-                grid-template-columns: 1fr 2fr;
-                grid-template-rows: auto;
-                gap: 2rem;
-                grid-template-areas:
-                    "profile summary"
-                    "education experience"
-                    "skills experience"
-                    "languages certificates"
-                    "interests references";
-            }
-
-            .profile-card { grid-area: profile; }
-            .profile-summary { grid-area: summary; }
-            .experience-section { grid-area: experience; }
-            .education-section { grid-area: education; }
-            .skills-section { grid-area: skills; }
-            .languages-section { grid-area: languages; }
-            .interests-section { grid-area: interests; }
-            .certificates-section { grid-area: certificates; }
-            .references-section { grid-area: references; }
-
-            .profile-card {
-                 align-self: start;
-                 justify-self: stretch;
-            }
-        }
-
-        /* Estilos para pantallas pequeñas (móviles) */
-        @media (max-width: 576px) {
-            .container {
-                padding: 1rem;
-            }
-            .card {
-                padding: 1.5rem;
-            }
-            .name {
-                font-size: 1.5rem;
-            }
-        }
-
-        /* --- BOTONES FLOTANTES --- */
-        .floating-buttons {
+        /* --- BOTONES FLOTANTES INFERIORES Y MENÚ MÓVIL --- */
+        .floating-actions {
             position: fixed;
             bottom: 20px;
             right: 20px;
@@ -483,7 +144,6 @@
             gap: 10px;
             z-index: 1000;
         }
-
         .floating-btn {
             background-color: var(--accent-color);
             color: white;
@@ -499,106 +159,205 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             transition: background-color 0.3s, transform 0.2s;
         }
-
         .floating-btn:hover {
             transform: scale(1.1);
-            background-color: var(--primary-text-color);
+        }
+        #mobile-nav-toggle {
+            display: block; /* Visible por defecto para móvil */
+        }
+        .mobile-nav-panel {
+            position: fixed;
+            top: 0;
+            right: -100%; /* Empieza fuera de la pantalla */
+            width: 280px;
+            height: 100%;
+            background-color: var(--card-color);
+            box-shadow: -4px 0 15px rgba(0,0,0,0.2);
+            z-index: 1002;
+            transition: right 0.4s ease-in-out;
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+        .mobile-nav-panel.show-menu {
+            right: 0; /* Se desliza a la vista */
+        }
+        .mobile-nav-panel .nav-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .mobile-nav-panel .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--secondary-text-color);
+            font-size: 1rem;
+        }
+        .mobile-nav-panel .nav-link:hover,
+        .mobile-nav-panel .nav-link.active-link {
             color: var(--accent-color);
         }
+        .mobile-nav-panel .nav-link i {
+            font-size: 1.5rem;
+        }
+        #mobile-nav-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--secondary-text-color);
+        }
 
-        /* --- ESTILOS PARA IMPRESIÓN (PDF y Print Media) --- */
-        @media print {
-            .main-header {
-                display: none !important; /* Ocultar menú en impresión */
+        /* --- MEDIA QUERIES PARA RESPONSIVIDAD DE MENÚS --- */
+        @media (min-width: 992px) {
+            .desktop-nav {
+                display: block; /* Muestra el menú de iconos en escritorio */
             }
-            body {
-                background-color: #ffffff !important;
-                color: #000000 !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
+            #mobile-nav-toggle {
+                display: none; /* Oculta el botón de hamburguesa en escritorio */
             }
-            .card {
-                background-color: #ffffff !important;
-                box-shadow: none !important;
-                border: 1px solid #eee;
-            }
-            .section-title {
-                color: #000000 !important;
-                border-bottom-color: #bbbbbb !important;
-            }
-            a {
-                color: #0000ff !important;
-                text-decoration: underline !important;
-            }
-            .profile-pic {
-                border-color: #cccccc !important;
-            }
-            .contact-item i, .interests-item i, .job-description ul > li::before {
-                color: #555555 !important;
-            }
-            .job, .reference-quote {
-                border-left-color: #cccccc !important;
-            }
-            .floating-buttons {
-                display: none !important;
-            }
-            .skill-tag {
-                background-color: #e0e0e0 !important;
-                color: #333333 !important;
-                border: 1px solid #ccc !important;
-            }
+        }
+        
+        /* --- ESTILOS DE LAS TARJETAS Y SECCIONES --- */
+        .card {
+            background-color: var(--card-color);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: color 0.3s, border-color 0.3s;
+        }
+        
+        /* --- ESTILOS DE CONTENIDO ESPECÍFICO --- */
+        .profile-card { text-align: center; }
+        .profile-pic { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 5px solid var(--accent-color); margin-bottom: 1rem; transition: border-color 0.3s; }
+        .name { font-size: 2rem; font-weight: 700; margin-bottom: 0.25rem; }
+        .contact-info { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1.5rem; }
+        .contact-item { display: flex; align-items: center; gap: 1rem; text-align: left; margin-bottom: 0.5rem; }
+        .contact-item i { font-size: 1.5rem; color: var(--accent-color); width: 25px; transition: color 0.3s; }
+        .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1.5rem; }
+        .social-links a i { font-size: 2rem; transition: transform 0.3s ease, color 0.3s; }
+        .social-links a:hover i { transform: scale(1.1); }
+        .profile-summary p { color: var(--secondary-text-color); transition: color 0.3s; }
+        .job { position: relative; padding-left: 2rem; border-left: 3px solid var(--border-color); margin-bottom: 2.5rem; transition: border-color 0.3s; }
+        .job:last-child { margin-bottom: 0; }
+        .job::before { content: ''; position: absolute; left: -9px; top: 5px; width: 15px; height: 15px; background-color: var(--accent-color); border-radius: 50%; border: 2px solid var(--bg-color); transition: background-color 0.3s, border-color 0.3s; }
+        .job-title { font-size: 1.25rem; font-weight: 600; }
+        .job-company { color: var(--secondary-text-color); font-weight: 400; margin-bottom: 1rem; transition: color 0.3s; }
+        .job-company a { font-style: italic; }
+        .job-description ul { list-style: none; padding-left: 0; color: var(--secondary-text-color); transition: color 0.3s; }
+        .job-description ul > li { position: relative; padding-left: 1.5rem; margin-bottom: 0.75rem; }
+        .job-description ul > li::before { content: '›'; position: absolute; left: 0; top: -2px; color: var(--accent-color); font-size: 1.5rem; font-weight: 600; transition: color 0.3s; }
+        .education-item { margin-bottom: 1.5rem; }
+        .education-item:last-child { margin-bottom: 0; }
+        .education-item strong { display: block; margin-bottom: 0.25rem; }
+        .education-item span { color: var(--secondary-text-color); transition: color 0.3s; }
+        .skills-category h4 { font-size: 1rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 1rem; color: var(--secondary-text-color); transition: color 0.3s; }
+        .skills-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .skill-tag { background-color: var(--border-color); color: var(--primary-text-color); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.85rem; transition: background-color 0.3s, color 0.3s; }
+        .languages-list-item { margin-bottom: 0.5rem; }
+        .languages-list-item:last-child { margin-bottom: 0; }
+        .fluency { color: var(--secondary-text-color); font-style: italic; margin-left: 0.5rem; transition: color 0.3s; }
+        .interests-list { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: flex-start; }
+        .interest-item { display: flex; align-items: center; gap: 0.5rem; color: var(--secondary-text-color); transition: color 0.3s; }
+        .interest-item i { font-size: 1.5rem; color: var(--accent-color); transition: color 0.3s; }
+        .certificate-item { margin-bottom: 1.5rem; }
+        .certificate-item:last-child { margin-bottom: 0; }
+        .certificate-title { font-weight: 600; }
+        .certificate-issuer { color: var(--secondary-text-color); font-style: italic; font-size: 0.9rem; transition: color 0.3s; }
+        .reference-item { margin-bottom: 1.5rem; }
+        .reference-item:last-child { margin-bottom: 0; }
+        .reference-quote { border-left: 3px solid var(--accent-color); padding-left: 1rem; margin-bottom: 0.5rem; color: var(--secondary-text-color); font-style: italic; transition: border-color 0.3s, color 0.3s; }
+        .reference-author { font-weight: 600; text-align: right; }
 
+        /* --- MEDIA QUERY PARA LAYOUT DE 2 COLUMNAS --- */
+        @media (min-width: 992px) {
             .container {
-                display: flex !important;
-                flex-direction: column !important;
-                gap: 1.5cm !important;
-                width: 100% !important;
-                max-width: 100% !important;
-                padding: 0 15mm !important;
-                box-sizing: border-box !important;
+                display: grid; grid-template-columns: 1fr 2fr; grid-template-rows: auto; gap: 2rem;
+                grid-template-areas: "profile summary" "education experience" "skills experience" "languages certificates" "interests references";
             }
-            section {
-                padding-top: 0 !important;
-                margin-top: 0 !important;
-            }
-            .card {
-                margin-bottom: 0 !important;
-                page-break-inside: avoid !important;
-                break-inside: avoid !important;
-                box-sizing: border-box !important;
-            }
-            .job {
-                page-break-inside: avoid !important;
-                break-inside: avoid !important;
-            }
-            h1, h2, h3, h4, h5, h6, p, ul, ol, table, blockquote {
-                max-width: 100% !important;
-                overflow: visible !important;
-                word-wrap: break-word !important;
-            }
+            .profile-card { grid-area: profile; align-self: start; justify-self: stretch; }
+            .profile-summary { grid-area: summary; }
+            .experience-section { grid-area: experience; }
+            .education-section { grid-area: education; }
+            .skills-section { grid-area: skills; }
+            .languages-section { grid-area: languages; }
+            .interests-section { grid-area: interests; }
+            .certificates-section { grid-area: certificates; }
+            .references-section { grid-area: references; }
+        }
+
+        /* --- MEDIA QUERY PARA MÓVILES PEQUEÑOS --- */
+        @media (max-width: 576px) {
+            .container { padding: 1rem; }
+            .card { padding: 1.5rem; }
+            .name { font-size: 1.5rem; }
+        }
+
+        /* --- ESTILOS PARA IMPRESIÓN --- */
+        @media print {
+            .desktop-nav, .floating-actions, .mobile-nav-panel { display: none !important; }
+            body { background-color: #ffffff !important; color: #000000 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .card { background-color: #ffffff !important; box-shadow: none !important; border: 1px solid #eee; }
+            section { scroll-margin-top: 0 !important; }
+            .section-title { color: #000000 !important; border-bottom-color: #bbbbbb !important; }
+            a { color: #0000ff !important; text-decoration: underline !important; }
+            .profile-pic { border-color: #cccccc !important; }
+            .contact-item i, .interests-item i, .job-description ul > li::before { color: #555555 !important; }
+            .job, .reference-quote { border-left-color: #cccccc !important; }
+            .skill-tag { background-color: #e0e0e0 !important; color: #333333 !important; border: 1px solid #ccc !important; }
+            .container { display: flex !important; flex-direction: column !important; gap: 1.5cm !important; width: 100% !important; max-width: 100% !important; padding: 0 15mm !important; box-sizing: border-box !important; }
+            .card { margin-bottom: 0 !important; page-break-inside: avoid !important; break-inside: avoid !important; box-sizing: border-box !important; }
+            .job { page-break-inside: avoid !important; break-inside: avoid !important; }
+            h1, h2, h3, h4, h5, h6, p, ul, ol, table, blockquote { max-width: 100% !important; overflow: visible !important; word-wrap: break-word !important; }
         }
     </style>
 </head>
 <body>
-    <header class="main-header">
-        <nav class="nav">
-            <a href="#" class="nav-logo">Samer Machara</a>
-            <div class="nav-menu" id="nav-menu">
-                <ul class="nav-list">
-                    <li class="nav-item"><a href="#profile" class="nav-link">Perfil</a></li>
-                    <li class="nav-item"><a href="#experience" class="nav-link">Experiencia</a></li>
-                    <li class="nav-item"><a href="#education" class="nav-link">Formación</a></li>
-                    <li class="nav-item"><a href="#skills" class="nav-link">Competencias</a></li>
-                    <li class="nav-item"><a href="#certificates" class="nav-link">Certificados</a></li>
-                </ul>
-            </div>
-            <div class="nav-toggle" id="nav-toggle">
-                <i class='bx bx-menu'></i>
-            </div>
-        </nav>
-    </header>
+    <nav class="desktop-nav">
+        <ul class="nav-list">
+            <li><a href="#profile" class="nav-link"><i class='bx bxs-user'></i><span class="nav-text">Perfil</span></a></li>
+            <li><a href="#experience" class="nav-link"><i class='bx bxs-briefcase-alt-2'></i><span class="nav-text">Experiencia</span></a></li>
+            <li><a href="#education" class="nav-link"><i class='bx bxs-graduation'></i><span class="nav-text">Formación</span></a></li>
+            <li><a href="#skills" class="nav-link"><i class='bx bx-receipt'></i><span class="nav-text">Competencias</span></a></li>
+            <li><a href="#certificates" class="nav-link"><i class='bx bxs-certification'></i><span class="nav-text">Certificados</span></a></li>
+            <li><a href="#languages" class="nav-link"><i class='bx bx-chat'></i><span class="nav-text">Langues</span></a></li>
+            <li><a href="#interests" class="nav-link"><i class='bx bxs-heart'></i><span class="nav-text">Centres d'intérêt</span></a></li>
+            <li><a href="#references" class="nav-link"><i class='bx bxs-quote-alt-left'></i><span class="nav-text">Références</span></a></li>
+        </ul>
+    </nav>
+    
+    <div class="mobile-nav-panel" id="mobile-nav-panel">
+        <i class='bx bx-x' id="mobile-nav-close"></i>
+        <ul class="nav-list">
+            <li><a href="#profile" class="nav-link"><i class='bx bxs-user'></i><span>Perfil</span></a></li>
+            <li><a href="#experience" class="nav-link"><i class='bx bxs-briefcase-alt-2'></i><span>Experiencia</span></a></li>
+            <li><a href="#education" class="nav-link"><i class='bx bxs-graduation'></i><span>Formación</span></a></li>
+            <li><a href="#skills" class="nav-link"><i class='bx bx-receipt'></i><span>Competencias</span></a></li>
+            <li><a href="#certificates" class="nav-link"><i class='bx bxs-certification'></i><span>Certificados</span></a></li>
+            <li><a href="#languages" class="nav-link"><i class='bx bx-chat'></i><span>Langues</span></a></li>
+            <li><a href="#interests" class="nav-link"><i class='bx bxs-heart'></i><span>Centres d'intérêt</span></a></li>
+            <li><a href="#references" class="nav-link"><i class='bx bxs-quote-alt-left'></i><span>Références</span></a></li>
+        </ul>
+    </div>
 
     <div class="container" id="cv-content">
+        
         <section id="profile" class="card profile-card">
             <img src="assets/img/foto.png" alt="Foto de Samer Machara" class="profile-pic">
             <h1 class="name">Samer MACHARA MARQUEZ</h1>
@@ -643,7 +402,6 @@
         <section id="experience" class="card experience-section">
             <h3 class="section-title"><i class='bx bxs-briefcase-alt-2'></i>Expériences Professionnelles</h3>
             <div class="experience-list">
-                
                 <div class="job">
                     <h4 class="job-title">Référent Technique – DOPS / Département Intégration</h4>
                     <p class="job-company">févr. 2023 - aujourd'hui | Agence du Numérique en Santé (ANS) | Saint-Denis, France</p>
@@ -665,7 +423,6 @@
                         </ul>
                     </div>
                 </div>
-
                 <div class="job">
                     <h4 class="job-title">Chef de projet</h4>
                     <p class="job-company">oct. 2021 - déc. 2022 | Freelance | Evry - France</p>
@@ -686,7 +443,6 @@
                        </ul>
                     </div>
                 </div>
-
                 <div class="job">
                     <h4 class="job-title">Chef de projet SI</h4>
                     <p class="job-company">oct. 2017 - janv. 2020 | Contrat Facil SAS | Paris - France</p>
@@ -702,7 +458,6 @@
                         </ul>
                     </div>
                 </div>
-                
                 <div class="job">
                     <h4 class="job-title">Ingénieur Plateforme Cloud</h4>
                     <p class="job-company">mars. 2016 - sept. 2017 | École d'ingénieurs Institut Mines-Télécom Sud-Paris et CNRS | Evry - France</p>
@@ -716,7 +471,6 @@
                        </ul>
                     </div>
                 </div>
-
                 <div class="job">
                     <h4 class="job-title">Ingénieur recherche et développement</h4>
                     <p class="job-company">oct. 2011 - oct. 2014 | École d'ingénieurs Institut Mines-Télécom Sud-Paris | Evry - France</p>
@@ -732,7 +486,6 @@
                        </ul>
                     </div>
                 </div>
-
                 <div class="job">
                     <h4 class="job-title">Chef de projet SI</h4>
                     <p class="job-company">nov. 2004 - sept. 2009 | Tagua Center S.A. | Caracas - Venezuela</p>
@@ -749,7 +502,6 @@
                        </ul>
                     </div>
                 </div>
-
                 <div class="job">
                     <h4 class="job-title">Analyste Concepteur Solutions Informatique</h4>
                     <p class="job-company">déc. 2000 - nov. 2004 | Zurich Seguros | Caracas - Venezuela</p>
@@ -767,7 +519,6 @@
                        </ul>
                     </div>
                 </div>
-
             </div>
         </section>
 
@@ -779,13 +530,13 @@
                     <span class="secondary-text">L'Université Paris-Saclay, France.<br>oct. 2011 &nbsp;-&nbsp;nov. 2015</span>
                 </div>
             </div>
-             <div class="education-item">
+            <div class="education-item">
                 <div>
                     <strong>MASTER Science de l'informatique et communication réseaux</strong><br>
                     <span class="secondary-text">École d'ingénieurs Institut Mines-Télécom Sud-Paris, France.<br>sept. 2009 &nbsp;-&nbspsept. 2011</span>
                 </div>
             </div>
-             <div class="education-item">
+            <div class="education-item">
                 <div>
                     <strong>Ingénieur en Sciences Informatiques</strong><br>
                     <span class="secondary-text">Université Nueva Esparta, Caracas, Venezuela.<br>sept. 1995 &nbsp;-&nbspsept. 2000</span>
@@ -795,7 +546,6 @@
 
         <section id="skills" class="card skills-section">
             <h3 class="section-title"><i class='bx bx-receipt'></i>Compétences</h3>
-            
             <div class="skills-category">
                 <h4>Gestion de projets Agile</h4>
                 <div class="skills-list">
@@ -809,7 +559,6 @@
                     <span class="skill-tag">Méthodes de priorisation (MoSCoW, WSJF)</span>
                 </div>
             </div>
-            
             <div class="skills-category">
                 <h4>Gestion de projet traditionnel</h4>
                 <div class="skills-list">
@@ -820,7 +569,6 @@
                     <span class="skill-tag">Gestion des ressources</span>
                 </div>
             </div>
-
             <div class="skills-category">
                 <h4>Analyse et conception</h4>
                 <div class="skills-list">
@@ -830,7 +578,6 @@
                     <span class="skill-tag">Spécifications fonctionnelles et techniques</span>
                 </div>
             </div>
-
             <div class="skills-category">
                 <h4>Sécurité informatique</h4>
                 <div class="skills-list">
@@ -842,7 +589,6 @@
                     <span class="skill-tag">Cryptographie et gestion des clés</span>
                 </div>
             </div>
-
             <div class="skills-category">
                 <h4>Logiciels de gestion de projets</h4>
                 <div class="skills-list">
@@ -850,7 +596,6 @@
                     <span class="skill-tag">Confluence(Wiki)</span>
                 </div>
             </div>
-
             <div class="skills-category">
                 <h4>Intelligence Artificielle</h4>
                 <div class="skills-list">
@@ -862,7 +607,6 @@
                     <span class="skill-tag">Intégration API IA dans des microservices</span>
                 </div>
             </div>
-
             <div class="skills-category">
                 <h4>Logiciels</h4>
                 <div class="skills-list">
@@ -875,7 +619,6 @@
                     <span class="skill-tag">Vault</span>
                 </div>
             </div>
-
             <div class="skills-category">
                 <h4>CMS et e-commerce</h4>
                 <div class="skills-list">
@@ -883,7 +626,6 @@
                     <span class="skill-tag">Drupal</span>
                 </div>
             </div>
-
             <div class="skills-category">
                 <h4>Informatique - Cloud</h4>
                 <div class="skills-list">
@@ -895,7 +637,6 @@
                     <span class="skill-tag">ArgoCD</span>
                 </div>
             </div>
-
             <div class="skills-category">
                 <h4>Développement Web</h4>
                 <div class="skills-list">
@@ -914,7 +655,6 @@
                     <span class="skill-tag">API GraphQL</span>
                 </div>
             </div>
-
             <div class="skills-category">
                 <h4>Qualité et tests</h4>
                 <div class="skills-list">
@@ -941,59 +681,59 @@
         </section>
 
         <section id="certificates" class="card certificates-section">
-             <h3 class="section-title"><i class='bx bxs-certification'></i>Certificats</h3>
-             <div class="certificate-item">
+            <h3 class="section-title"><i class='bx bxs-certification'></i>Certificats</h3>
+            <div class="certificate-item">
                 <p class="certificate-title">Elastic Observability Engineer | nov. 2024 – déc. 2024</p>
                 <p class="certificate-issuer">PLB Consultant (Formation intra-entreprise)</p>
-             </div>
-             <div class="certificate-item">
+            </div>
+            <div class="certificate-item">
                 <p class="certificate-title">Optimiser son temps, ses priorités sans stress | déc. 2024</p>
                 <p class="certificate-issuer">Efficior (Formation intra-entreprise)</p>
-             </div>
-             <div class="certificate-item">
+            </div>
+            <div class="certificate-item">
                 <p class="certificate-title">Sauveteur secouriste du travail (SST) | sept. 2024</p>
                 <p class="certificate-issuer">Apave (Formation intra-entreprise)</p>
-             </div>
-             <div class="certificate-item">
+            </div>
+            <div class="certificate-item">
                 <p class="certificate-title">Réaliser une architecture microservices en Java | juin 2024</p>
                 <p class="certificate-issuer">ORSYS (inter-entreprise, formation CEGOS)</p>
-             </div>
-             <div class="certificate-item">
+            </div>
+            <div class="certificate-item">
                 <p class="certificate-title">Améliorer sa communication dans ses relations professionnelles | janv. 2024</p>
                 <p class="certificate-issuer">CEGOS (Formation intra-entreprise)</p>
-             </div>
-             <div class="certificate-item">
+            </div>
+            <div class="certificate-item">
                 <p class="certificate-title">Webinaire : Décider et concevoir une réunion : se poser les bonnes questions | nov. 2023</p>
                 <p class="certificate-issuer">École internationale de réuniologie</p>
-             </div>
-             <div class="certificate-item">
+            </div>
+            <div class="certificate-item">
                 <p class="certificate-title">Manager une équipe - niveau 1 | oct. 2023</p>
                 <p class="certificate-issuer">CEGOS (Formation intra-entreprise)</p>
-             </div>
-             <div class="certificate-item">
+            </div>
+            <div class="certificate-item">
                 <p class="certificate-title">Conduite des projets informatiques | sept. 2011 – févr. 2012</p>
                 <p class="certificate-issuer">Formation certifiant Conservatoire National des Arts et Métiers</p>
-             </div>
-             <div class="certificate-item">
+            </div>
+            <div class="certificate-item">
                 <p class="certificate-title">Cours de productivité personnelle à l'ère numérique | 2016</p>
                 <p class="certificate-issuer">Fundacion Santa Maria la Real, Espagne</p>
-             </div>
-             <div class="certificate-item">
+            </div>
+            <div class="certificate-item">
                 <p class="certificate-title">Cours de Web Analytics | 2015</p>
                 <p class="certificate-issuer">Escuela de Organización Industrial, Espagne<br><a href="https://sites.google.com/a/learning.eoi.es/mooc-analitica-web/" target="_blank">https://sites.google.com/a/learning.eoi.es/mooc-analitica-web/</a></p>
-             </div>
-             <div class="certificate-item">
+            </div>
+            <div class="certificate-item">
                 <p class="certificate-title">Cours de Cloud Computing | 2015</p>
                 <p class="certificate-issuer">Escuela de Organización Industrial, Espagne<br><a href="https://sites.google.com/a/learning.eoi.es/mooc-cloudcomputing/modulo-1-fundamentos-de-la-tecnologia-cloud-yde-sus-servicios-asociados" target="_blank">https://sites.google.com/a/learning.eoi.es/mooc-cloudcomputing/modulo-1-fundamentos-de-la-tecnologia-cloud-yde-sus-servicios-asociados</a></p>
-             </div>
-             <div class="certificate-item">
+            </div>
+            <div class="certificate-item">
                 <p class="certificate-title">Cours de E-commerce | 2015</p>
                 <p class="certificate-issuer">Escuela de Organización Industrial, Espagne<br><a href="https://sites.google.com/a/learning.eoi.es/mooc-ecommerce/" target="_blank">https://sites.google.com/a/learning.eoi.es/mooc-ecommerce/</a></p>
-             </div>
-             <div class="certificate-item">
+            </div>
+            <div class="certificate-item">
                 <p class="certificate-title">Cours de base en marketing numérique | 2015</p>
                 <p class="certificate-issuer">Interactive Advertising Bureau, Espagne<br><a href="https://sites.google.com/site/tucursomarketingdigital/coleccionmarketing-digital" target="_blank">https://sites.google.com/site/tucursomarketingdigital/coleccionmarketing-digital</a></p>
-             </div>
+            </div>
         </section>
         
         <section id="references" class="card references-section">
@@ -1004,22 +744,26 @@
                 </blockquote>
                 <p class="reference-author">– Jorge Alzualde, Project Director et Co-Founder de Bucares SARL.</p>
             </div>
-             <div class="reference-item">
+            <div class="reference-item">
                 <blockquote class="reference-quote">
                     A son arrivée, Monsieur Machara Marquez a fait preuve d'une grande implication, et a été un véritable apport au niveau organisationnel notamment en mettant en place les process nécessaires. Par ailleurs il a parfaitement su identifier et mettre en place une sous-traitance R&amp;D avec une équipe à distance.
                 </blockquote>
                 <p class="reference-author">– Virgile Delporte, Représentant du Président Workogether SARL.</p>
             </div>
-             <div class="reference-item">
+            <div class="reference-item">
                 <blockquote class="reference-quote">
                     Relativement à ses études, Samer a été un élève brillant qui avait déjà une expérience en programmation et qui a réussi à acquérir les connaissances et les technologies que j'ai enseignées. Il était l'un des meilleurs élèves de sa promotion comme l'attestent ses résultats ... Son travail dans mon équipe a nécessité une grande adaptation et l'acquisition de connaissances nouvelles. ...Samer a très bien pris son sujet en main, il s'est bien intégré à notre équipe pendant son projet.
                 </blockquote>
                 <p class="reference-author">– Christian Bac, Enseignant-chercheur Télécom SudParis.</p>
             </div>
         </section>
+        
     </div>
 
-    <div class="floating-buttons">
+    <div class="floating-actions">
+        <button id="mobile-nav-toggle" class="floating-btn" title="Navegación">
+            <i class='bx bx-menu'></i>
+        </button>
         <button id="print-cv-btn" class="floating-btn" title="Imprimir o Guardar como PDF">
             <i class='bx bxs-printer'></i>
         </button>
@@ -1031,42 +775,46 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const body = document.body;
-            
-            /* --- LÓGICA DEL MENÚ DE NAVEGACIÓN --- */
-            const navMenu = document.getElementById('nav-menu');
-            const navToggle = document.getElementById('nav-toggle');
-            const navLinks = document.querySelectorAll('.nav-link');
 
-            // Mostrar/ocultar menú en móvil
-            if (navToggle) {
-                navToggle.addEventListener('click', () => {
-                    navMenu.classList.toggle('show-menu');
+            /* --- LÓGICA DEL MENÚ DE NAVEGACIÓN --- */
+            const mobileNavPanel = document.getElementById('mobile-nav-panel');
+            const mobileNavToggle = document.getElementById('mobile-nav-toggle');
+            const mobileNavClose = document.getElementById('mobile-nav-close');
+            const allNavLinks = document.querySelectorAll('.nav-link');
+
+            if (mobileNavToggle) {
+                mobileNavToggle.addEventListener('click', () => {
+                    mobileNavPanel.classList.add('show-menu');
                 });
             }
 
-            // Ocultar menú al hacer clic en un enlace (móvil)
-            const linkAction = () => {
-                navMenu.classList.remove('show-menu');
+            if (mobileNavClose) {
+                mobileNavClose.addEventListener('click', () => {
+                    mobileNavPanel.classList.remove('show-menu');
+                });
             }
-            navLinks.forEach(n => n.addEventListener('click', linkAction));
+            
+            const linkAction = () => {
+                mobileNavPanel.classList.remove('show-menu');
+            }
+            allNavLinks.forEach(n => n.addEventListener('click', linkAction));
 
-            // Resaltar enlace activo al hacer scroll (Scrollspy)
+
+            /* --- LÓGICA DE SCROLLSPY (ENLACE ACTIVO) --- */
             const sections = document.querySelectorAll('section[id]');
             const scrollActive = () => {
                 const scrollY = window.pageYOffset;
 
                 sections.forEach(current => {
                     const sectionHeight = current.offsetHeight;
-                    const sectionTop = current.offsetTop - 58; // 58px = ~altura del header + un pequeño offset
+                    const sectionTop = current.offsetTop - 80;
                     const sectionId = current.getAttribute('id');
-                    const link = document.querySelector('.nav-menu a[href*=' + sectionId + ']');
+                    const linksToUpdate = document.querySelectorAll('.nav-link[href*=' + sectionId + ']');
 
-                    if (link) {
-                         if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                            link.classList.add('active-link');
-                        } else {
-                            link.classList.remove('active-link');
-                        }
+                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                        linksToUpdate.forEach(link => link.classList.add('active-link'));
+                    } else {
+                        linksToUpdate.forEach(link => link.classList.remove('active-link'));
                     }
                 });
             }
@@ -1110,16 +858,13 @@
                     body.classList.remove('dark-theme');
                     body.classList.add('light-theme');
                 }
-
                 window.print();
-
                 window.addEventListener('afterprint', () => {
                     if (isDark) {
                         body.classList.remove('light-theme');
                         body.classList.add('dark-theme');
                     }
                 }, { once: true });
-                
                  if (isDark && !window.matchMedia('print').matches) {
                      setTimeout(() => {
                         body.classList.remove('light-theme');
