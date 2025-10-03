@@ -102,7 +102,7 @@ export const cvData: CVData = {
     },
     {
       category: "DevOps & Cloud",
-      items: ["Docker", "Kubernetes", "CI/CD (GitLab CI, Jenkins)", "Ansible", "AWS"],
+      items: ["Docker", "Kubernetes", "CI/CD (GitLab CI, Jenkins)", "HelmChart", "OVH", "ArgoCD"],
     },
     {
       category: "Sécurité",
@@ -112,6 +112,10 @@ export const cvData: CVData = {
       category: "Méthodologies",
       items: ["Agile (Scrum, Kanban)", "TDD", "BDD", "Cycle en V"],
     },
+    {
+        category: "IA",
+        items: ["ChatGPT", "Gemini", "AgentsAI", "N8N", "LangChain"],
+    }
   ],
   languages: [
     { name: "Espagnol", level: "Courant (natif)" },
