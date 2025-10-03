@@ -2,8 +2,8 @@ import type { CVData } from './types';
 
 export const cvData: CVData = {
   personalInfo: {
-    name: "Samer MACHARA MARQUEZ",
-    title: "Architecte Logiciel & Responsable de Projets Techniques",
+    name: "Architecte Logiciel & Référente Technique",
+    title: "Samer MACHARA MARQUEZ",
     location: "Evry Courcouronnes, France",
     email: "smachara@gmail.com",
     phone: "(+33) 6 48 58 69 31",
@@ -11,10 +11,10 @@ export const cvData: CVData = {
     linkedin: "linkedin.com/in/samer-machara",
     github: "github.com/smachara",
   },
-  summary: "Architecte logiciel et leader technique avec plus de 15 ans d'expérience dans la conception de systèmes distribués, d'architectures microservices et la mise en œuvre de pratiques DevOps. Expert en pilotage de projets stratégiques en environnement Agile, avec une forte compétence en sécurité et en alignement avec les référentiels métiers.",
+  summary: "Architecte logiciel, référent technique avec plus de 15 ans d'expérience dans la conception de systèmes distribués, d'architectures micro-services et la mise en œuvre de pratiques DevOps. Expert en pilotage de projets stratégiques en environnement Agile, avec compétence en base de données, développement, sécurité, et en alignement avec les référentiels métiers.",
   experience: [
     {
-      title: "Référent Technique – DOPS / Département Intégration",
+      title: "Référent Technique",
       company: "Agence du Numérique en Santé (ANS)",
       period: "févr. 2023 - aujourd'hui",
       responsibilities: [
@@ -26,7 +26,7 @@ export const cvData: CVData = {
       ],
     },
     {
-      title: "Chef de projet",
+      title: "Chef de projet - Scrum Master",
       company: "Freelance pour Plug and Plate",
       period: "oct. 2021 - déc. 2022",
       responsibilities: [
@@ -102,7 +102,7 @@ export const cvData: CVData = {
     },
     {
       category: "DevOps & Cloud",
-      items: ["Docker", "Kubernetes", "CI/CD (GitLab CI, Jenkins)", "Ansible", "AWS"],
+      items: ["Docker", "Kubernetes", "CI/CD (GitLab CI, Jenkins)", "HelmChart", "OVH", "ArgoCD"],
     },
     {
       category: "Sécurité",
@@ -112,6 +112,10 @@ export const cvData: CVData = {
       category: "Méthodologies",
       items: ["Agile (Scrum, Kanban)", "TDD", "BDD", "Cycle en V"],
     },
+    {
+        category: "IA",
+        items: ["ChatGPT", "Gemini", "AgentsAI", "N8N", "LangChain"],
+    }
   ],
   languages: [
     { name: "Espagnol", level: "Courant (natif)" },
