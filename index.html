@@ -1,335 +1,603 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV | Samer MACHARA MARQUEZ - Architecte Logiciel</title>
-    
+
     <!-- Librería para generar PDF -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    
+
     <!-- CDN de Tailwind CSS para el diseño -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Habilitar el modo oscuro basado en clases de Tailwind
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
 
     <!-- Google Fonts: Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Boxicons para los iconos -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     <style>
-      /* Estilos generales y de impresión */
-      body {
-        font-family: 'Poppins', sans-serif;
-      }
-      @media print {
-        /* Eliminar sombras y márgenes para la impresión */
-        main {
-          box-shadow: none !important;
-          margin: 0 !important;
-          padding: 0.5cm 0 0 0 !important; /* Reducir padding superior para impresión */
+        /* Estilos generales y de impresión */
+        body {
+            font-family: 'Poppins', sans-serif;
         }
-        /* Ajustes de página para la impresión en A4 */
-        @page {
-          size: A4;
-          margin: 1.5cm;
+
+        @media print {
+
+            /* Ocultar el tema oscuro al imprimir para asegurar consistencia */
+            html.dark {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                background-color: white !important;
+                color: black !important;
+            }
+
+            .dark main,
+            .dark h1,
+            .dark h2,
+            .dark h3,
+            .dark h4,
+            .dark p,
+            .dark span,
+            .dark li,
+            .dark i,
+            .dark a {
+                color: initial !important;
+            }
+
+            .dark .bg-blue-100 {
+                background-color: #DBEAFE !important;
+                /* bg-blue-100 */
+            }
+
+            .dark .text-blue-800 {
+                color: #1E40AF !important;
+                /* text-blue-800 */
+            }
+
+            .dark .bg-blue-600 {
+                background-color: #2563EB !important;
+                /* bg-blue-600 */
+            }
+
+            /* Eliminar sombras y márgenes para la impresión */
+            main {
+                box-shadow: none !important;
+                margin: 0 !important;
+                padding: 0.5cm 0 0 0 !important;
+                /* Reducir padding superior para impresión */
+            }
+
+            /* Ajustes de página para la impresión en A4 */
+            @page {
+                size: A4;
+                margin: 1.5cm;
+            }
+
+            html,
+            body {
+                width: 210mm;
+                height: 297mm;
+            }
+
+            /* Evitar saltos de página dentro de elementos */
+            .no-break-inside {
+                break-inside: avoid;
+            }
+
+            /* Ocultar el resumen web y mostrar el resumen para PDF/Impresión */
+            #web-summary {
+                display: none;
+            }
+
+            #pdf-summary {
+                display: block;
+            }
         }
-        html, body {
-          width: 210mm;
-          height: 297mm;
-          -webkit-print-color-adjust: exact;
-          print-color-adjust: exact;
-        }
-        /* Evitar saltos de página dentro de elementos */
-        .no-break-inside {
-          break-inside: avoid;
-        }
-        /* Ocultar el resumen web y mostrar el resumen para PDF/Impresión */
-        #web-summary {
-            display: none;
-        }
-        #pdf-summary {
-            display: block;
-        }
-      }
     </style>
 </head>
-<body class="bg-gray-100">
+
+<body class="bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
     <div id="root">
         <div class="min-h-screen">
             <!-- Contenido principal del CV -->
-            <main id="cv-content" class="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8 bg-white shadow-lg">
-                <header class="flex flex-col sm:flex-row justify-between items-start pb-4 border-b border-gray-200">
+            <main id="cv-content"
+                class="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8 bg-white dark:bg-gray-800 shadow-lg transition-colors duration-300">
+                <header
+                    class="flex flex-col sm:flex-row justify-between items-start pb-4 border-b border-gray-200 dark:border-gray-700">
                     <div>
-                        <h1 class="text-3xl font-bold text-gray-800">Architecte Logiciel &amp; Référente Technique</h1>
-                        <h2 class="text-md font-semibold text-blue-600 mt-1">Samer MACHARA MARQUEZ</h2>
+                        <h1 class="text-3xl font-bold text-gray-800 dark:text-gray-100">Architecte Logiciel &amp;
+                            Référente Technique</h1>
+                        <h2 class="text-md font-semibold text-blue-600 dark:text-blue-400 mt-1">Samer MACHARA MARQUEZ
+                        </h2>
                     </div>
                     <!-- Información de contacto -->
                     <div class="mt-4 sm:mt-0 flex flex-col items-start gap-1">
-                        <div class="flex items-center text-sm text-gray-600">
-                            <i class="bx bxs-map text-blue-600 mr-2 text-base"></i><span>Evry Courcouronnes, France</span>
+                        <div class="flex items-center text-sm text-gray-600 dark:text-gray-400">
+                            <i class="bx bxs-map text-blue-600 dark:text-blue-400 mr-2 text-base"></i><span>Evry
+                                Courcouronnes, France</span>
                         </div>
-                        <div class="flex items-center text-sm text-gray-600">
-                            <i class="bx bxs-envelope text-blue-600 mr-2 text-base"></i><a href="mailto:smachara@gmail.com" class="hover:underline">smachara@gmail.com</a>
+                        <div class="flex items-center text-sm text-gray-600 dark:text-gray-400">
+                            <i class="bx bxs-envelope text-blue-600 dark:text-blue-400 mr-2 text-base"></i><a
+                                href="mailto:smachara@gmail.com" class="hover:underline">smachara@gmail.com</a>
                         </div>
-                        <div class="flex items-center text-sm text-gray-600">
-                            <i class="bx bxs-phone text-blue-600 mr-2 text-base"></i><a href="tel:(+33)648586931" class="hover:underline">(+33) 6 48 58 69 31</a>
+                        <div class="flex items-center text-sm text-gray-600 dark:text-gray-400">
+                            <i class="bx bxs-phone text-blue-600 dark:text-blue-400 mr-2 text-base"></i><a
+                                href="tel:(+33)648586931" class="hover:underline">(+33) 6 48 58 69 31</a>
                         </div>
-                        <div class="flex items-center text-sm text-gray-600">
-                            <i class="bx bxl-linkedin text-blue-600 mr-2 text-base"></i><a href="https://linkedin.com/in/samer-machara" target="_blank" rel="noopener noreferrer" class="hover:underline">linkedin.com/in/samer-machara</a>
+                        <div class="flex items-center text-sm text-gray-600 dark:text-gray-400">
+                            <i class="bx bxl-linkedin text-blue-600 dark:text-blue-400 mr-2 text-base"></i><a
+                                href="https://linkedin.com/in/samer-machara" target="_blank" rel="noopener noreferrer"
+                                class="hover:underline">linkedin.com/in/samer-machara</a>
                         </div>
-                        <div class="flex items-center text-sm text-gray-600">
-                            <i class="bx bxl-github text-blue-600 mr-2 text-base"></i><a href="https://github.com/smachara" target="_blank" rel="noopener noreferrer" class="hover:underline">github.com/smachara</a>
+                        <div class="flex items-center text-sm text-gray-600 dark:text-gray-400">
+                            <i class="bx bxl-github text-blue-600 dark:text-blue-400 mr-2 text-base"></i><a
+                                href="https://github.com/smachara" target="_blank" rel="noopener noreferrer"
+                                class="hover:underline">github.com/smachara</a>
                         </div>
-                        <div class="flex items-center text-sm text-gray-600">
-                            <i class="bx bx-globe text-blue-600 mr-2 text-base"></i><a href="https://smachara.github.io/samer-machara-marquez" target="_blank" rel="noopener noreferrer" class="hover:underline">smachara.github.io/samer-machara-marquez</a>
+                        <div class="flex items-center text-sm text-gray-600 dark:text-gray-400">
+                            <i class="bx bx-globe text-blue-600 dark:text-blue-400 mr-2 text-base"></i><a
+                                href="https://smachara.github.io/samer-machara-marquez" target="_blank"
+                                rel="noopener noreferrer"
+                                class="hover:underline">smachara.github.io/samer-machara-marquez</a>
                         </div>
                     </div>
                 </header>
-                
+
                 <!-- Resumen para la vista web -->
                 <section id="web-summary" class="py-4">
-                    <p class="text-center text-sm text-gray-700 leading-relaxed">
-                        Architecte logiciel, référent technique avec plus de 15 ans d'expérience dans la conception de systèmes distribués, d'architectures micro-services et la mise en œuvre de pratiques DevOps. Expert en pilotage de projets stratégiques en environnement Agile, avec compétence en base de données, développement, sécurité, et en alignement avec les référentiels métiers.
+                    <p class="text-center text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                        Architecte logiciel, référent technique avec plus de 15 ans d'expérience dans la conception de
+                        systèmes distribués, d'architectures micro-services et la mise en œuvre de pratiques DevOps.
+                        Expert en pilotage de projets stratégiques en environnement Agile, avec compétence en base de
+                        données, développement, sécurité, et en alignement avec les référentiels métiers.
                     </p>
                 </section>
 
                 <!-- Contenido movido aquí para el diseño del PDF -->
-                 <section id="pdf-summary" class="hidden py-4">
-                     <p class="text-center text-sm text-gray-700 leading-relaxed">
-                        Architecte logiciel, référent technique avec plus de 15 ans d'expérience dans la conception de systèmes distribués, d'architectures micro-services et la mise en œuvre de pratiques DevOps. Expert en pilotage de projets stratégiques en environnement Agile, avec compétence en base de données, développement, sécurité, et en alignement avec les référentiels métiers.
+                <section id="pdf-summary" class="hidden py-4">
+                    <p class="text-center text-sm text-gray-700 leading-relaxed">
+                        Architecte logiciel, référent technique avec plus de 15 ans d'expérience dans la conception de
+                        systèmes distribués, d'architectures micro-services et la mise en œuvre de pratiques DevOps.
+                        Expert en pilotage de projets stratégiques en environnement Agile, avec compétence en base de
+                        données, développement, sécurité, et en alignement avec les référentiels métiers.
                     </p>
-                 </section>
+                </section>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8 mt-6">
                     <div class="md:col-span-2">
                         <section class="no-break-inside">
-                            <h2 class="text-xl font-bold text-gray-700 mb-3 flex items-center border-b-2 border-gray-200 pb-1"><i class="bx bx-briefcase-alt-2 text-blue-600 mr-3 text-2xl"></i><span>Expériences Professionnelles</span></h2>
+                            <h2
+                                class="text-xl font-bold text-gray-700 dark:text-gray-200 mb-3 flex items-center border-b-2 border-gray-200 dark:border-gray-700 pb-1">
+                                <i
+                                    class="bx bx-briefcase-alt-2 text-blue-600 dark:text-blue-400 mr-3 text-2xl"></i><span>Expériences
+                                    Professionnelles</span>
+                            </h2>
                             <div class="no-break-inside mb-4">
-                                <h3 class="text-lg font-semibold text-gray-800">Référent Technique (févr. 2023 - aujourd'hui)</h3>
-                                <p class="text-sm font-medium text-blue-600">Agence du Numérique en Santé (ANS)</p>
+                                <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100">Référent Technique
+                                    (févr. 2023 - aujourd'hui)</h3>
+                                <p class="text-sm font-medium text-blue-600 dark:text-blue-400">Agence du Numérique en
+                                    Santé (ANS)</p>
                                 <ul class="mt-2 list-none space-y-1 pl-1">
-                                    <li class="relative pl-4 text-sm text-gray-600 leading-snug"><span class="absolute left-0 top-1.5 h-1 w-1 rounded-full bg-blue-600"></span>Responsable technique des projets FINESS et RIPSC (architecture, sécurité, validation DAT/DAL).</li>
-                                    <li class="relative pl-4 text-sm text-gray-600 leading-snug"><span class="absolute left-0 top-1.5 h-1 w-1 rounded-full bg-blue-600"></span>Définition et application des règles d'architecture logicielle et technique (microservices, DDD).</li>
-                                    <li class="relative pl-4 text-sm text-gray-600 leading-snug"><span class="absolute left-0 top-1.5 h-1 w-1 rounded-full bg-blue-600"></span>Coordination des acteurs internes (MOA, MOE) et externes (éditeurs, sous-traitants).</li>
-                                    <li class="relative pl-4 text-sm text-gray-600 leading-snug"><span class="absolute left-0 top-1.5 h-1 w-1 rounded-full bg-blue-600"></span>Conduite des travaux de mise en conformité sécurité (EBIOS, homologation ANS) pour FINESS.</li>
-                                    <li class="relative pl-4 text-sm text-gray-600 leading-snug"><span class="absolute left-0 top-1.5 h-1 w-1 rounded-full bg-blue-600"></span>Initiation d'une encyclopédie des bonnes pratiques pour standardiser les livrables et capitaliser sur les retours d'expérience.</li>
+                                    <li class="relative pl-4 text-sm text-gray-600 dark:text-gray-400 leading-snug">
+                                        <span
+                                            class="absolute left-0 top-1.5 h-1 w-1 rounded-full bg-blue-600 dark:bg-blue-400"></span>Responsable
+                                        technique des projets FINESS et RIPSC (architecture, sécurité, validation
+                                        DAT/DAL).
+                                    </li>
+                                    <li class="relative pl-4 text-sm text-gray-600 dark:text-gray-400 leading-snug">
+                                        <span
+                                            class="absolute left-0 top-1.5 h-1 w-1 rounded-full bg-blue-600 dark:bg-blue-400"></span>Définition
+                                        et application des règles d'architecture logicielle et technique (microservices,
+                                        DDD).
+                                    </li>
+                                    <li class="relative pl-4 text-sm text-gray-600 dark:text-gray-400 leading-snug">
+                                        <span
+                                            class="absolute left-0 top-1.5 h-1 w-1 rounded-full bg-blue-600 dark:bg-blue-400"></span>Coordination
+                                        des acteurs internes (MOA, MOE) et externes (éditeurs, sous-traitants).
+                                    </li>
+                                    <li class="relative pl-4 text-sm text-gray-600 dark:text-gray-400 leading-snug">
+                                        <span
+                                            class="absolute left-0 top-1.5 h-1 w-1 rounded-full bg-blue-600 dark:bg-blue-400"></span>Conduite
+                                        des travaux de mise en conformité sécurité (EBIOS, homologation ANS) pour
+                                        FINESS.
+                                    </li>
+                                    <li class="relative pl-4 text-sm text-gray-600 dark:text-gray-400 leading-snug">
+                                        <span
+                                            class="absolute left-0 top-1.5 h-1 w-1 rounded-full bg-blue-600 dark:bg-blue-400"></span>Initiation
+                                        d'une encyclopédie des bonnes pratiques pour standardiser les livrables et
+                                        capitaliser sur les retours d'expérience.
+                                    </li>
                                 </ul>
                             </div>
                             <div class="no-break-inside mb-4">
-                                <h3 class="text-lg font-semibold text-gray-800">Chef de projet - Scrum Master (oct. 2021 - déc. 2022)</h3>
-                                <p class="text-sm font-medium text-blue-600">Freelance pour Plug and Plate</p>
+                                <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100">Chef de projet -
+                                    Scrum Master (oct. 2021 - déc. 2022)</h3>
+                                <p class="text-sm font-medium text-blue-600 dark:text-blue-400">Freelance pour Plug and
+                                    Plate</p>
                                 <ul class="mt-2 list-none space-y-1 pl-1">
-                                    <li class="relative pl-4 text-sm text-gray-600 leading-snug"><span class="absolute left-0 top-1.5 h-1 w-1 rounded-full bg-blue-600"></span>Pilotage de projet Agile (Scrum) pour le développement de solutions web pour la restauration.</li>
-                                    <li class="relative pl-4 text-sm text-gray-600 leading-snug"><span class="absolute left-0 top-1.5 h-1 w-1 rounded-full bg-blue-600"></span>Cadrage des besoins métiers, rédaction des Users Stories, et priorisation du Backlog.</li>
-                                    <li class="relative pl-4 text-sm text-gray-600 leading-snug"><span class="absolute left-0 top-1.5 h-1 w-1 rounded-full bg-blue-600"></span>Accompagnement des équipes de développement et organisation de la recette.</li>
-                                </ul>
-                            </div>
-                             <div class="no-break-inside mb-4">
-                                <h3 class="text-lg font-semibold text-gray-800">Chef de projet SI (oct. 2017 - janv. 2020)</h3>
-                                <p class="text-sm font-medium text-blue-600">Contrat Facil SAS (Testamento.fr)</p>
-                                <ul class="mt-2 list-none space-y-1 pl-1">
-                                    <li class="relative pl-4 text-sm text-gray-600 leading-snug"><span class="absolute left-0 top-1.5 h-1 w-1 rounded-full bg-blue-600"></span>Implémentation de la méthodologie Scrum au sein de l'équipe interne.</li>
-                                    <li class="relative pl-4 text-sm text-gray-600 leading-snug"><span class="absolute left-0 top-1.5 h-1 w-1 rounded-full bg-blue-600"></span>Gestion du projet d'industrialisation de la solution vers une architecture micro-services.</li>
-                                    <li class="relative pl-4 text-sm text-gray-600 leading-snug"><span class="absolute left-0 top-1.5 h-1 w-1 rounded-full bg-blue-600"></span>Supervision et sélection des prestataires sous-traitants.</li>
+                                    <li class="relative pl-4 text-sm text-gray-600 dark:text-gray-400 leading-snug">
+                                        <span
+                                            class="absolute left-0 top-1.5 h-1 w-1 rounded-full bg-blue-600 dark:bg-blue-400"></span>Pilotage
+                                        de projet Agile (Scrum) pour le développement de solutions web pour la
+                                        restauration.
+                                    </li>
+                                    <li class="relative pl-4 text-sm text-gray-600 dark:text-gray-400 leading-snug">
+                                        <span
+                                            class="absolute left-0 top-1.5 h-1 w-1 rounded-full bg-blue-600 dark:bg-blue-400"></span>Cadrage
+                                        des besoins métiers, rédaction des Users Stories, et priorisation du Backlog.
+                                    </li>
+                                    <li class="relative pl-4 text-sm text-gray-600 dark:text-gray-400 leading-snug">
+                                        <span
+                                            class="absolute left-0 top-1.5 h-1 w-1 rounded-full bg-blue-600 dark:bg-blue-400"></span>Accompagnement
+                                        des équipes de développement et organisation de la recette.
+                                    </li>
                                 </ul>
                             </div>
                             <div class="no-break-inside mb-4">
-                                <h3 class="text-lg font-semibold text-gray-800">Ingénieur Plateforme Cloud (mars 2016 - sept. 2017)</h3>
-                                <p class="text-sm font-medium text-blue-600">Institut Mines-Télécom Sud-Paris & CNRS</p>
+                                <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100">Chef de projet SI
+                                    (oct. 2017 - janv. 2020)</h3>
+                                <p class="text-sm font-medium text-blue-600 dark:text-blue-400">Contrat Facil SAS
+                                    (Testamento.fr)</p>
                                 <ul class="mt-2 list-none space-y-1 pl-1">
-                                    <li class="relative pl-4 text-sm text-gray-600 leading-snug"><span class="absolute left-0 top-1.5 h-1 w-1 rounded-full bg-blue-600"></span>Consolidation de la gestion et de l'administration de la plateforme Cloud du laboratoire.</li>
-                                    <li class="relative pl-4 text-sm text-gray-600 leading-snug"><span class="absolute left-0 top-1.5 h-1 w-1 rounded-full bg-blue-600"></span>Coordination du déménagement du Data Center et centralisation de la documentation.</li>
+                                    <li class="relative pl-4 text-sm text-gray-600 dark:text-gray-400 leading-snug">
+                                        <span
+                                            class="absolute left-0 top-1.5 h-1 w-1 rounded-full bg-blue-600 dark:bg-blue-400"></span>Implémentation
+                                        de la méthodologie Scrum au sein de l'équipe interne.
+                                    </li>
+                                    <li class="relative pl-4 text-sm text-gray-600 dark:text-gray-400 leading-snug">
+                                        <span
+                                            class="absolute left-0 top-1.5 h-1 w-1 rounded-full bg-blue-600 dark:bg-blue-400"></span>Gestion
+                                        du projet d'industrialisation de la solution vers une architecture
+                                        micro-services.
+                                    </li>
+                                    <li class="relative pl-4 text-sm text-gray-600 dark:text-gray-400 leading-snug">
+                                        <span
+                                            class="absolute left-0 top-1.5 h-1 w-1 rounded-full bg-blue-600 dark:bg-blue-400"></span>Supervision
+                                        et sélection des prestataires sous-traitants.
+                                    </li>
                                 </ul>
                             </div>
                             <div class="no-break-inside mb-4">
-                                <h3 class="text-lg font-semibold text-gray-800">Ingénieur recherche et développement (oct. 2011 - oct. 2014)</h3>
-                                <p class="text-sm font-medium text-blue-600">Institut Mines-Télécom Sud-Paris</p>
+                                <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100">Ingénieur Plateforme
+                                    Cloud (mars 2016 - sept. 2017)</h3>
+                                <p class="text-sm font-medium text-blue-600 dark:text-blue-400">Institut Mines-Télécom
+                                    Sud-Paris & CNRS</p>
                                 <ul class="mt-2 list-none space-y-1 pl-1">
-                                    <li class="relative pl-4 text-sm text-gray-600 leading-snug"><span class="absolute left-0 top-1.5 h-1 w-1 rounded-full bg-blue-600"></span>Conception de modèles pour la gestion de la qualité de l'information dans l'IoT.</li>
-                                    <li class="relative pl-4 text-sm text-gray-600 leading-snug"><span class="absolute left-0 top-1.5 h-1 w-1 rounded-full bg-blue-600"></span>Gestion autonome du projet de recherche, expérimentation et rédaction scientifique.</li>
+                                    <li class="relative pl-4 text-sm text-gray-600 dark:text-gray-400 leading-snug">
+                                        <span
+                                            class="absolute left-0 top-1.5 h-1 w-1 rounded-full bg-blue-600 dark:bg-blue-400"></span>Consolidation
+                                        de la gestion et de l'administration de la plateforme Cloud du laboratoire.
+                                    </li>
+                                    <li class="relative pl-4 text-sm text-gray-600 dark:text-gray-400 leading-snug">
+                                        <span
+                                            class="absolute left-0 top-1.5 h-1 w-1 rounded-full bg-blue-600 dark:bg-blue-400"></span>Coordination
+                                        du déménagement du Data Center et centralisation de la documentation.
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="no-break-inside mb-4">
+                                <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100">Ingénieur recherche
+                                    et développement (oct. 2011 - oct. 2014)</h3>
+                                <p class="text-sm font-medium text-blue-600 dark:text-blue-400">Institut Mines-Télécom
+                                    Sud-Paris</p>
+                                <ul class="mt-2 list-none space-y-1 pl-1">
+                                    <li class="relative pl-4 text-sm text-gray-600 dark:text-gray-400 leading-snug">
+                                        <span
+                                            class="absolute left-0 top-1.5 h-1 w-1 rounded-full bg-blue-600 dark:bg-blue-400"></span>Conception
+                                        de modèles pour la gestion de la qualité de l'information dans l'IoT.
+                                    </li>
+                                    <li class="relative pl-4 text-sm text-gray-600 dark:text-gray-400 leading-snug">
+                                        <span
+                                            class="absolute left-0 top-1.5 h-1 w-1 rounded-full bg-blue-600 dark:bg-blue-400"></span>Gestion
+                                        autonome du projet de recherche, expérimentation et rédaction scientifique.
+                                    </li>
                                 </ul>
                             </div>
                         </section>
                     </div>
                     <div class="md:col-span-1 space-y-6 mt-6 md:mt-0">
                         <section class="no-break-inside">
-                            <h2 class="text-xl font-bold text-gray-700 mb-3 flex items-center border-b-2 border-gray-200 pb-1"><i class="bx bxs-graduation text-blue-600 mr-3 text-2xl"></i><span>Formation</span></h2>
+                            <h2
+                                class="text-xl font-bold text-gray-700 dark:text-gray-200 mb-3 flex items-center border-b-2 border-gray-200 dark:border-gray-700 pb-1">
+                                <i
+                                    class="bx bxs-graduation text-blue-600 dark:text-blue-400 mr-3 text-2xl"></i><span>Formation</span>
+                            </h2>
                             <div class="mb-2">
-                                <h3 class="font-semibold text-gray-800">Doctorat en Informatique (2011 - 2015)</h3>
-                                <p class="text-sm text-gray-500">L'Université Paris-Saclay, France</p>
+                                <h3 class="font-semibold text-gray-800 dark:text-gray-100">Doctorat en Informatique
+                                    (2011 - 2015)</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">L'Université Paris-Saclay, France
+                                </p>
                             </div>
                             <div class="mb-2">
-                                <h3 class="font-semibold text-gray-800">Master en Informatique et Réseaux (2009 - 2011)</h3>
-                                <p class="text-sm text-gray-500">Institut Mines-Télécom Sud-Paris, France</p>
+                                <h3 class="font-semibold text-gray-800 dark:text-gray-100">Master en Informatique et
+                                    Réseaux (2009 - 2011)</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Institut Mines-Télécom Sud-Paris,
+                                    France</p>
                             </div>
                             <div class="mb-2">
-                                <h3 class="font-semibold text-gray-800">Ingénieur en Sciences Informatiques (1995 - 2000)</h3>
-                                <p class="text-sm text-gray-500">Université Nueva Esparta, Venezuela</p>
+                                <h3 class="font-semibold text-gray-800 dark:text-gray-100">Ingénieur en Sciences
+                                    Informatiques (1995 - 2000)</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Université Nueva Esparta, Venezuela
+                                </p>
                             </div>
                         </section>
                         <section class="no-break-inside">
-                            <h2 class="text-xl font-bold text-gray-700 mb-3 flex items-center border-b-2 border-gray-200 pb-1"><i class="bx bxs-chip text-blue-600 mr-3 text-2xl"></i><span>Compétences</span></h2>
+                            <h2
+                                class="text-xl font-bold text-gray-700 dark:text-gray-200 mb-3 flex items-center border-b-2 border-gray-200 dark:border-gray-700 pb-1">
+                                <i
+                                    class="bx bxs-chip text-blue-600 dark:text-blue-400 mr-3 text-2xl"></i><span>Compétences</span>
+                            </h2>
                             <div class="space-y-3">
                                 <div class="no-break-inside">
-                                    <h4 class="font-semibold text-sm text-gray-800 mb-1.5">Architecture & Conception</h4>
+                                    <h4 class="font-semibold text-sm text-gray-800 dark:text-gray-100 mb-1.5">
+                                        Architecture & Conception</h4>
                                     <div class="flex flex-wrap gap-1.5">
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">Microservices</span>
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">DDD</span>
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">SOA</span>
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">API REST</span>
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">Design Patterns</span>
-                                         <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">Clean Architecture</span>
-                                    </div>
-                                </div>
-                                 <div class="no-break-inside">
-                                    <h4 class="font-semibold text-sm text-gray-800 mb-1.5">Langages & Frameworks</h4>
-                                    <div class="flex flex-wrap gap-1.5">
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">Java (Spring Boot)</span>
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">JavaScript</span>
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">TypeScript (Node.js)</span>
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">Python</span>
-                                    </div>
-                                </div>
-                                <div class="no-break-inside">
-                                    <h4 class="font-semibold text-sm text-gray-800 mb-1.5">Bases de données</h4>
-                                    <div class="flex flex-wrap gap-1.5">
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">PostgreSQL</span>
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">MySQL</span>
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">MongoDB</span>
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">Elasticsearch</span>
+                                        <span
+                                            class="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-1 rounded-full">Microservices</span>
+                                        <span
+                                            class="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-1 rounded-full">DDD</span>
+                                        <span
+                                            class="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-1 rounded-full">SOA</span>
+                                        <span
+                                            class="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-1 rounded-full">API
+                                            REST</span>
+                                        <span
+                                            class="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-1 rounded-full">Design
+                                            Patterns</span>
+                                        <span
+                                            class="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-1 rounded-full">Clean
+                                            Architecture</span>
                                     </div>
                                 </div>
                                 <div class="no-break-inside">
-                                    <h4 class="font-semibold text-sm text-gray-800 mb-1.5">DevOps & Cloud</h4>
+                                    <h4 class="font-semibold text-sm text-gray-800 dark:text-gray-100 mb-1.5">Langages &
+                                        Frameworks</h4>
                                     <div class="flex flex-wrap gap-1.5">
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">Docker</span>
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">Kubernetes</span>
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">CI/CD (GitLab CI, Jenkins)</span>
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">HelmChart</span>
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">OVH</span>
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">ArgoCD</span>
+                                        <span
+                                            class="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-1 rounded-full">Java
+                                            (Spring Boot)</span>
+                                        <span
+                                            class="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-1 rounded-full">JavaScript</span>
+                                        <span
+                                            class="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-1 rounded-full">TypeScript
+                                            (Node.js)</span>
+                                        <span
+                                            class="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-1 rounded-full">Python</span>
                                     </div>
                                 </div>
                                 <div class="no-break-inside">
-                                    <h4 class="font-semibold text-sm text-gray-800 mb-1.5">Sécurité</h4>
+                                    <h4 class="font-semibold text-sm text-gray-800 dark:text-gray-100 mb-1.5">Bases de
+                                        données</h4>
                                     <div class="flex flex-wrap gap-1.5">
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">EBIOS</span>
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">OWASP Top 10</span>
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">Homologation ANSSI</span>
+                                        <span
+                                            class="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-1 rounded-full">PostgreSQL</span>
+                                        <span
+                                            class="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-1 rounded-full">MySQL</span>
+                                        <span
+                                            class="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-1 rounded-full">MongoDB</span>
+                                        <span
+                                            class="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-1 rounded-full">Elasticsearch</span>
                                     </div>
                                 </div>
                                 <div class="no-break-inside">
-                                    <h4 class="font-semibold text-sm text-gray-800 mb-1.5">Méthodologies</h4>
+                                    <h4 class="font-semibold text-sm text-gray-800 dark:text-gray-100 mb-1.5">DevOps &
+                                        Cloud</h4>
                                     <div class="flex flex-wrap gap-1.5">
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">Agile (Scrum, Kanban)</span>
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">TDD</span>
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">BDD</span>
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">Cycle en V</span>
+                                        <span
+                                            class="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-1 rounded-full">Docker</span>
+                                        <span
+                                            class="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-1 rounded-full">Kubernetes</span>
+                                        <span
+                                            class="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-1 rounded-full">CI/CD
+                                            (GitLab CI, Jenkins)</span>
+                                        <span
+                                            class="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-1 rounded-full">HelmChart</span>
+                                        <span
+                                            class="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-1 rounded-full">OVH</span>
+                                        <span
+                                            class="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-1 rounded-full">ArgoCD</span>
                                     </div>
                                 </div>
                                 <div class="no-break-inside">
-                                    <h4 class="font-semibold text-sm text-gray-800 mb-1.5">IA</h4>
+                                    <h4 class="font-semibold text-sm text-gray-800 dark:text-gray-100 mb-1.5">Sécurité
+                                    </h4>
                                     <div class="flex flex-wrap gap-1.5">
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">ChatGPT</span>
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">Gemini</span>
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">AgentsAI</span>
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">N8N</span>
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">LangChain</span>
+                                        <span
+                                            class="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-1 rounded-full">EBIOS</span>
+                                        <span
+                                            class="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-1 rounded-full">OWASP
+                                            Top 10</span>
+                                    </div>
+                                </div>
+                                <div class="no-break-inside">
+                                    <h4 class="font-semibold text-sm text-gray-800 dark:text-gray-100 mb-1.5">
+                                        Méthodologies</h4>
+                                    <div class="flex flex-wrap gap-1.5">
+                                        <span
+                                            class="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-1 rounded-full">Agile
+                                            (Scrum, Kanban)</span>
+                                        <span
+                                            class="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-1 rounded-full">TDD</span>
+                                        <span
+                                            class="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-1 rounded-full">BDD</span>
+                                        <span
+                                            class="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-1 rounded-full">Cycle
+                                            en V</span>
+                                    </div>
+                                </div>
+                                <div class="no-break-inside">
+                                    <h4 class="font-semibold text-sm text-gray-800 dark:text-gray-100 mb-1.5">IA</h4>
+                                    <div class="flex flex-wrap gap-1.5">
+                                        <span
+                                            class="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-1 rounded-full">ChatGPT</span>
+                                        <span
+                                            class="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-1 rounded-full">Gemini</span>
+                                        <span
+                                            class="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-1 rounded-full">AgentsAI</span>
+                                        <span
+                                            class="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-1 rounded-full">N8N</span>
+                                        <span
+                                            class="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-1 rounded-full">LangChain</span>
                                     </div>
                                 </div>
                             </div>
                         </section>
                         <section class="no-break-inside">
-                             <h2 class="text-xl font-bold text-gray-700 mb-3 flex items-center border-b-2 border-gray-200 pb-1"><i class="bx bxs-certification text-blue-600 mr-3 text-2xl"></i><span>Certificats</span></h2>
-                             <div class="mb-2">
-                                 <h4 class="font-medium text-sm text-gray-700">Elastic Observability Engineer (2024)</h4>
-                                 <p class="text-xs text-gray-500">PLB Consultant</p>
-                             </div>
-                             <div class="mb-2">
-                                 <h4 class="font-medium text-sm text-gray-700">Réaliser une architecture microservices en Java (2024)</h4>
-                                 <p class="text-xs text-gray-500">ORSYS</p>
-                             </div>
-                             <div class="mb-2">
-                                 <h4 class="font-medium text-sm text-gray-700">Manager une équipe - niveau 1 (2023)</h4>
-                                 <p class="text-xs text-gray-500">CEGOS</p>
-                             </div>
-                             <div class="mb-2">
-                                 <h4 class="font-medium text-sm text-gray-700">Conduite des projets informatiques (2012)</h4>
-                                 <p class="text-xs text-gray-500">CNAM</p>
-                             </div>
+                            <h2
+                                class="text-xl font-bold text-gray-700 dark:text-gray-200 mb-3 flex items-center border-b-2 border-gray-200 dark:border-gray-700 pb-1">
+                                <i
+                                    class="bx bxs-certification text-blue-600 dark:text-blue-400 mr-3 text-2xl"></i><span>Certificats</span>
+                            </h2>
+                            <div class="mb-2">
+                                <h4 class="font-medium text-sm text-gray-700 dark:text-gray-100">Elastic Observability
+                                    Engineer (2024)</h4>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">PLB Consultant</p>
+                            </div>
+                            <div class="mb-2">
+                                <h4 class="font-medium text-sm text-gray-700 dark:text-gray-100">Réaliser une
+                                    architecture microservices en Java (2024)</h4>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">ORSYS</p>
+                            </div>
+                            <div class="mb-2">
+                                <h4 class="font-medium text-sm text-gray-700 dark:text-gray-100">Manager une équipe -
+                                    niveau 1 (2023)</h4>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">CEGOS</p>
+                            </div>
+                            <div class="mb-2">
+                                <h4 class="font-medium text-sm text-gray-700 dark:text-gray-100">Conduite des projets
+                                    informatiques (2012)</h4>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">CNAM</p>
+                            </div>
                         </section>
                         <section class="no-break-inside">
-                            <h2 class="text-xl font-bold text-gray-700 mb-3 flex items-center border-b-2 border-gray-200 pb-1"><i class="bx bx-chat text-blue-600 mr-3 text-2xl"></i><span>Langues</span></h2>
+                            <h2
+                                class="text-xl font-bold text-gray-700 dark:text-gray-200 mb-3 flex items-center border-b-2 border-gray-200 dark:border-gray-700 pb-1">
+                                <i
+                                    class="bx bx-chat text-blue-600 dark:text-blue-400 mr-3 text-2xl"></i><span>Langues</span>
+                            </h2>
                             <ul class="space-y-1">
-                                <li class="flex justify-between text-sm text-gray-700"><span>Espagnol</span><span class="text-gray-500">Courant (natif)</span></li>
-                                <li class="flex justify-between text-sm text-gray-700"><span>Français</span><span class="text-gray-500">Courant (C1)</span></li>
-                                <li class="flex justify-between text-sm text-gray-700"><span>Anglais</span><span class="text-gray-500">Courant (B2)</span></li>
+                                <li class="flex justify-between text-sm text-gray-700 dark:text-gray-300">
+                                    <span>Espagnol</span><span class="text-gray-500 dark:text-gray-400">Courant
+                                        (natif)</span>
+                                </li>
+                                <li class="flex justify-between text-sm text-gray-700 dark:text-gray-300">
+                                    <span>Français</span><span class="text-gray-500 dark:text-gray-400">Courant
+                                        (C1)</span>
+                                </li>
+                                <li class="flex justify-between text-sm text-gray-700 dark:text-gray-300">
+                                    <span>Anglais</span><span class="text-gray-500 dark:text-gray-400">Courant
+                                        (B2)</span>
+                                </li>
                             </ul>
                         </section>
-                         <section class="no-break-inside">
-                            <h2 class="text-xl font-bold text-gray-700 mb-3 flex items-center border-b-2 border-gray-200 pb-1"><i class="bx bx-quote-alt-left text-blue-600 mr-3 text-2xl"></i><span>Références</span></h2>
-                            <p class="text-sm text-gray-600 italic">Références disponibles sur demande.</p>
+                        <section class="no-break-inside">
+                            <h2
+                                class="text-xl font-bold text-gray-700 dark:text-gray-200 mb-3 flex items-center border-b-2 border-gray-200 dark:border-gray-700 pb-1">
+                                <i
+                                    class="bx bx-quote-alt-left text-blue-600 dark:text-blue-400 mr-3 text-2xl"></i><span>Références</span>
+                            </h2>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 italic">Références disponibles sur
+                                demande.</p>
                         </section>
                     </div>
                 </div>
             </main>
-            
+
             <!-- Botones flotantes para imprimir y descargar -->
             <div class="fixed bottom-4 right-4 flex flex-col gap-3 print:hidden">
-                <button id="download-btn" class="w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition-transform transform hover:scale-110" title="Télécharger le CV en PDF" aria-label="Télécharger le CV en PDF">
+                <button id="theme-toggle"
+                    class="w-12 h-12 bg-gray-500 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 transition-transform transform hover:scale-110"
+                    title="Changer de thème" aria-label="Changer de thème">
+                    <i id="theme-icon" class="bx bxs-moon text-2xl"></i>
+                </button>
+                <button id="download-btn"
+                    class="w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition-transform transform hover:scale-110"
+                    title="Télécharger le CV en PDF" aria-label="Télécharger le CV en PDF">
                     <i class="bx bxs-download text-2xl"></i>
                 </button>
-                <button id="print-btn" class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-transform transform hover:scale-110" title="Imprimer ou Enregistrer en PDF" aria-label="Imprimer ou Enregistrer en PDF">
+                <button id="print-btn"
+                    class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-transform transform hover:scale-110"
+                    title="Imprimer ou Enregistrer en PDF" aria-label="Imprimer ou Enregistrer en PDF">
                     <i class="bx bxs-printer text-2xl"></i>
                 </button>
             </div>
         </div>
     </div>
-    
+
     <script>
         // Funcionalidad para los botones
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const printBtn = document.getElementById('print-btn');
             const downloadBtn = document.getElementById('download-btn');
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            const htmlEl = document.documentElement;
             const cvContent = document.getElementById('cv-content');
             const webSummary = document.getElementById('web-summary');
             const pdfSummary = document.getElementById('pdf-summary');
 
             // 1. Botón de Imprimir
-            printBtn.addEventListener('click', function() {
+            printBtn.addEventListener('click', function () {
                 window.print();
             });
 
             // 2. Botón de Descargar como PDF
-            downloadBtn.addEventListener('click', function() {
-                // Ocultar resumen web y mostrar resumen de PDF
+            downloadBtn.addEventListener('click', function () {
+                // Forzar tema claro para el PDF para asegurar consistencia
+                const isDark = htmlEl.classList.contains('dark');
+                if (isDark) {
+                    htmlEl.classList.remove('dark');
+                }
+
                 webSummary.style.display = 'none';
                 pdfSummary.style.display = 'block';
-                // Eliminar temporalmente el padding para el PDF
                 cvContent.classList.remove('p-4', 'sm:p-6', 'lg:p-8');
 
 
                 const opt = {
-                    margin:       [0.8, 0.5, 1.5, 0.5], // Margen [arriba, izquierda, abajo, derecha] en cm
-                    filename:     'CV_Samer_MACHARA_MARQUEZ.pdf',
-                    image:        { type: 'jpeg', quality: 0.98 },
-                    html2canvas:  { scale: 2, useCORS: true, letterRendering: true },
-                    jsPDF:        { unit: 'cm', format: 'a4', orientation: 'portrait' }
+                    margin: [0.8, 0.5, 1.5, 0.5],
+                    filename: 'CV_Samer_MACHARA_MARQUEZ.pdf',
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { scale: 2, useCORS: true, letterRendering: true },
+                    jsPDF: { unit: 'cm', format: 'a4', orientation: 'portrait' }
                 };
-                
-                // Usar html2pdf para generar el PDF y revertir los cambios cuando termine
+
                 html2pdf().from(cvContent).set(opt).save().finally(function () {
-                    // Revertir los estilos a la vista web
                     webSummary.style.display = 'block';
                     pdfSummary.style.display = 'none';
                     cvContent.classList.add('p-4', 'sm:p-6', 'lg:p-8');
+                    // Restaurar el tema oscuro si estaba activo
+                    if (isDark) {
+                        htmlEl.classList.add('dark');
+                    }
                 });
+            });
+
+            // 3. Botón para cambiar de tema
+            themeToggleBtn.addEventListener('click', function () {
+                htmlEl.classList.toggle('dark');
+                if (htmlEl.classList.contains('dark')) {
+                    themeIcon.classList.remove('bxs-moon');
+                    themeIcon.classList.add('bxs-sun');
+                } else {
+                    themeIcon.classList.remove('bxs-sun');
+                    themeIcon.classList.add('bxs-moon');
+                }
             });
         });
     </script>
 </body>
+
 </html>
