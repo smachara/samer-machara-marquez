@@ -51,6 +51,13 @@
         .no-break-inside {
           break-inside: avoid;
         }
+        /* Ocultar el resumen web y mostrar el resumen para PDF/Impresión */
+        #web-summary {
+            display: none;
+        }
+        #pdf-summary {
+            display: block;
+        }
       }
     </style>
 </head>
@@ -60,15 +67,12 @@
             <!-- Contenido principal del CV -->
             <main id="cv-content" class="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8 bg-white shadow-lg">
                 <header class="flex flex-col sm:flex-row justify-between items-start pb-4 border-b border-gray-200">
-                    <div class="max-w-xl">
+                    <div>
                         <h1 class="text-3xl font-bold text-gray-800">Architecte Logiciel &amp; Référente Technique</h1>
                         <h2 class="text-md font-semibold text-blue-600 mt-1">Samer MACHARA MARQUEZ</h2>
-                        <p class="mt-4 text-sm text-gray-700 leading-relaxed">
-                           Architecte logiciel, référent technique avec plus de 15 ans d'expérience dans la conception de systèmes distribués, d'architectures micro-services et la mise en œuvre de pratiques DevOps. Expert en pilotage de projets stratégiques en environnement Agile, avec compétence en base de données, développement, sécurité, et en alignement avec les référentiels métiers.
-                        </p>
                     </div>
                     <!-- Información de contacto -->
-                    <div class="mt-4 sm:mt-0 flex flex-col items-start gap-1 flex-shrink-0 sm:ml-8">
+                    <div class="mt-4 sm:mt-0 flex flex-col items-start gap-1">
                         <div class="flex items-center text-sm text-gray-600">
                             <i class="bx bxs-map text-blue-600 mr-2 text-base"></i><span>Evry Courcouronnes, France</span>
                         </div>
@@ -89,6 +93,20 @@
                         </div>
                     </div>
                 </header>
+                
+                <!-- Resumen para la vista web -->
+                <section id="web-summary" class="py-4">
+                    <p class="text-center text-sm text-gray-700 leading-relaxed">
+                        Architecte logiciel, référent technique avec plus de 15 ans d'expérience dans la conception de systèmes distribués, d'architectures micro-services et la mise en œuvre de pratiques DevOps. Expert en pilotage de projets stratégiques en environnement Agile, avec compétence en base de données, développement, sécurité, et en alignement avec les référentiels métiers.
+                    </p>
+                </section>
+
+                <!-- Contenido movido aquí para el diseño del PDF -->
+                 <section id="pdf-summary" class="hidden py-4">
+                     <p class="text-center text-sm text-gray-700 leading-relaxed">
+                        Architecte logiciel, référent technique avec plus de 15 ans d'expérience dans la conception de systèmes distribués, d'architectures micro-services et la mise en œuvre de pratiques DevOps. Expert en pilotage de projets stratégiques en environnement Agile, avec compétence en base de données, développement, sécurité, et en alignement avec les référentiels métiers.
+                    </p>
+                 </section>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8 mt-6">
                     <div class="md:col-span-2">
@@ -282,6 +300,8 @@
             const printBtn = document.getElementById('print-btn');
             const downloadBtn = document.getElementById('download-btn');
             const cvContent = document.getElementById('cv-content');
+            const webSummary = document.getElementById('web-summary');
+            const pdfSummary = document.getElementById('pdf-summary');
 
             // 1. Botón de Imprimir
             printBtn.addEventListener('click', function() {
@@ -290,8 +310,12 @@
 
             // 2. Botón de Descargar como PDF
             downloadBtn.addEventListener('click', function() {
+                // Ocultar resumen web y mostrar resumen de PDF
+                webSummary.style.display = 'none';
+                pdfSummary.style.display = 'block';
                 // Eliminar temporalmente el padding para el PDF
                 cvContent.classList.remove('p-4', 'sm:p-6', 'lg:p-8');
+
 
                 const opt = {
                     margin:       [0.8, 0.5, 1.5, 0.5], // Margen [arriba, izquierda, abajo, derecha] en cm
@@ -304,6 +328,8 @@
                 // Usar html2pdf para generar el PDF y revertir los cambios cuando termine
                 html2pdf().from(cvContent).set(opt).save().finally(function () {
                     // Revertir los estilos a la vista web
+                    webSummary.style.display = 'block';
+                    pdfSummary.style.display = 'none';
                     cvContent.classList.add('p-4', 'sm:p-6', 'lg:p-8');
                 });
             });
