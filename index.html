@@ -26,10 +26,6 @@
         font-family: 'Poppins', sans-serif;
       }
       @media print {
-        /* Ocultar botones en la versión de impresión */
-        .no-print {
-          display: none;
-        }
         /* Eliminar sombras y márgenes para la impresión */
         main {
           box-shadow: none !important;
@@ -283,7 +279,7 @@
             </main>
             
             <!-- Botones flotantes para imprimir y descargar -->
-            <div class="fixed bottom-4 right-4 flex flex-col gap-3 no-print">
+            <div class="fixed bottom-4 right-4 flex flex-col gap-3 print:hidden">
                 <button id="download-btn" class="w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition-transform transform hover:scale-110" title="Télécharger le CV en PDF" aria-label="Télécharger le CV en PDF">
                     <i class="bx bxs-download text-2xl"></i>
                 </button>
