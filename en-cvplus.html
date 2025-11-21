@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - Samer Machara Marquez</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Reset & Base Styles */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --text-color: #333;
+            --light-text: #666;
+            --bg-color: #f8f9fa;
+            --sidebar-width: 290px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+            color: var(--text-color);
+            background-color: #525659;
+            font-size: 13.5px;
+        }
+
+        /* Page Structure */
+        .page {
+            background: white;
+            width: 210mm;
+            min-height: 297mm;
+            margin: 20px auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            display: flex;
+            position: relative;
+        }
+
+        /* Left Sidebar */
+        .sidebar {
+            background-color: var(--primary-color);
+            color: white;
+            width: var(--sidebar-width);
+            padding: 35px 20px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Right Main Content */
+        .main-content {
+            flex-grow: 1;
+            padding: 35px 35px;
+            background-color: white;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 28px;
+            text-transform: uppercase;
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .role-subtitle {
+            font-size: 16px;
+            color: var(--secondary-color);
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-size: 15px;
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 6px;
+            margin: 25px 0 15px 0;
+            color: var(--primary-color);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .sidebar h2 {
+            color: white;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        /* Sidebar Elements */
+        .contact-info {
+            margin-bottom: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 12.5px;
+            word-break: break-word;
+        }
+
+        .contact-item i {
+            width: 25px;
+            margin-right: 8px;
+            color: var(--secondary-color);
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contact-item a:hover {
+            color: var(--secondary-color);
+        }
+
+        .skill-group {
+            margin-bottom: 18px;
+        }
+
+        .skill-title {
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--secondary-color);
+            font-size: 12.5px;
+            text-transform: uppercase;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 7px;
+            border-radius: 3px;
+            font-size: 11.5px;
+        }
+
+        .education-item {
+            margin-bottom: 18px;
+        }
+
+        .edu-degree {
+            font-weight: 700;
+            font-size: 13px;
+            line-height: 1.3;
+            margin-bottom: 2px;
+        }
+
+        .edu-school {
+            font-size: 12px;
+            color: #bdc3c7;
+            margin-bottom: 1px;
+        }
+
+        .edu-year {
+            font-size: 11.5px;
+            font-style: italic;
+            color: var(--secondary-color);
+        }
+
+        /* Main Content Elements */
+        .summary {
+            margin-bottom: 20px;
+            color: #444;
+            text-align: justify;
+            font-style: italic;
+            border-left: 3px solid #eee;
+            padding-left: 12px;
+            font-size: 13px;
+        }
+
+        .experience-item {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 3px;
+            flex-wrap: wrap;
+        }
+
+        .job-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .company-name {
+            font-weight: 600;
+            color: #444;
+            font-size: 14px;
+        }
+
+        .job-date {
+            font-size: 12px;
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .job-desc ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .job-desc li {
+            position: relative;
+            padding-left: 12px;
+            margin-bottom: 4px;
+            text-align: justify;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        .job-desc li::before {
+            content: "•";
+            color: var(--secondary-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .pub-item {
+            margin-bottom: 12px;
+            font-size: 12.5px;
+        }
+
+        .pub-title {
+            font-weight: 600;
+            color: white;
+            line-height: 1.3;
+            margin-bottom: 2px;
+        }
+
+        .pub-source {
+            font-style: italic;
+            color: #bdc3c7;
+            font-size: 11.5px;
+        }
+
+        /* Controls for Screen */
+        .controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            width: 200px;
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            text-align: center;
+            transition: background 0.2s;
+        }
+
+        /* Print Adjustments */
+        @media print {
+            body {
+                background: none;
+            }
+
+            .page {
+                margin: 0;
+                box-shadow: none;
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+
+            .sidebar {
+                float: left;
+                min-height: 100vh;
+                height: 100%;
+            }
+
+            .main-content {
+                margin-left: var(--sidebar-width);
+            }
+
+            .controls {
+                display: none;
+            }
+
+            .sidebar {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            a {
+                text-decoration: none;
+                color: inherit;
+            }
+
+            .experience-item {
+                break-inside: avoid;
+            }
+
+            h2 {
+                break-after: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="controls">
+        <button class="btn" onclick="window.print()">
+            <i class="fas fa-print"></i> Print / PDF
+        </button>
+        <div style="margin-top:10px; font-size:11px; color:#666; line-height:1.4;">
+            <strong>Tip:</strong> This resume is dense.<br>
+            When printing, it will automatically adapt to 2 pages.
+        </div>
+    </div>
+
+    <div class="page">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <!-- Contact -->
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Evry Courcouronnes, France</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:smachara@gmail.com">smachara@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>(+33) 6 48 58 69 31</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <a href="https://linkedin.com/in/samer-machara">/in/samer-machara</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <a href="https://github.com/smachara">/smachara</a>
+                </div>
+            </div>
+
+            <!-- Education -->
+            <h2>Education</h2>
+
+            <div class="education-item">
+                <div class="edu-degree">PhD in Computer Science</div>
+                <div class="edu-school">Université Paris-Saclay</div>
+                <div class="edu-year">2011 - 2015</div>
+                <div style="font-size:11px; margin-top:4px; opacity:0.8; font-style:italic; line-height:1.2;">
+                    Thesis: Context quality management models and algorithms and privacy respect (IoT).
+                </div>
+            </div>
+
+            <div class="education-item">
+                <div class="edu-degree">Master in Computer Science & Networks</div>
+                <div class="edu-school">Institut Mines-Télécom Sud-Paris</div>
+                <div class="edu-year">2009 - 2011</div>
+            </div>
+
+            <div class="education-item">
+                <div class="edu-degree">Computer Science Engineer</div>
+                <div class="edu-school">Universidad Nueva Esparta (Vzla)</div>
+                <div class="edu-year">1995 - 2000</div>
+            </div>
+
+            <!-- Skills -->
+            <h2>Skills</h2>
+            <div class="skill-group">
+                <div class="skill-title">Architecture</div>
+                <div class="skill-tags">
+                    <span class="tag">Microservices</span>
+                    <span class="tag">DDD</span>
+                    <span class="tag">System Design</span>
+                    <span class="tag">REST API</span>
+                    <span class="tag">Clean Architecture</span>
+                </div>
+            </div>
+            <div class="skill-group">
+                <div class="skill-title">Development</div>
+                <div class="skill-tags">
+                    <span class="tag">Java (Spring Boot)</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">JavaScript/TypeScript</span>
+                    <span class="tag">Node.js</span>
+                </div>
+            </div>
+
+
+
+            <div class="skill-group">
+                <div class="skill-title">Data & AI</div>
+                <div class="skill-tags">
+                    <span class="tag">PostgreSQL</span>
+                    <span class="tag">MongoDB</span>
+                    <span class="tag">Elasticsearch</span>
+                    <span class="tag">LLMs & AgentsAI</span>
+                    <span class="tag">LangChain</span>
+                </div>
+            </div>
+
+            <div class="skill-group">
+                <div class="skill-title">DevOps & Cloud</div>
+                <div class="skill-tags">
+                    <span class="tag">Docker & Kubernetes</span>
+                    <span class="tag">CI/CD (GitLab/Jenkins)</span>
+                    <span class="tag">ArgoCD</span>
+                    <span class="tag">GCP/OVH</span>
+                </div>
+            </div>
+
+            <div class="skill-group">
+                <div class="skill-title">Languages</div>
+                <div class="skill-tags" style="display:block;">
+                    <div style="margin-bottom:3px; font-size:12px;"><strong>Spanish:</strong> Native</div>
+                    <div style="margin-bottom:3px; font-size:12px;"><strong>French:</strong> Fluent (C2)</div>
+                    <div style="font-size:12px;"><strong>English:</strong> Fluent (C1)</div>
+                </div>
+            </div>
+
+            <!-- Publications -->
+            <h2>Publications & Research</h2>
+            <div class="pub-item">
+                <div class="pub-title">"A comparative analysis of context-management approaches for the Internet of
+                    Things"</div>
+                <div class="pub-source">The International Arab Journal of Information Technology (2017)</div>
+            </div>
+            <div class="pub-item">
+                <div class="pub-title">"Trust-based Context Contract Models for the Internet of Things"</div>
+                <div class="pub-source">International Symposium on Ubiquitous Intelligence and Autonomic Systems (2013)
+                </div>
+            </div>
+            <div class="pub-item">
+                <div class="pub-title">"INCOME — Multi-scale Context Management for the Internet of Things"</div>
+                <div class="pub-source">International Joint Conference on Ambient Intelligence (2012)</div>
+            </div>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <header>
+                <h1>Samer MACHARA MARQUEZ</h1>
+                <div class="role-subtitle">Technical Architect & Engineering Manager</div>
+
+                <div class="summary">
+                    Software Architect and Technical Lead (PhD) with over 25 years of experience in designing distributed
+                    systems and robust, secure microservices architectures. Expert in steering strategic projects in Agile
+                    environments, I combine strong technical expertise (Java, Cloud, IoT, AI) with proven team management
+                    skills. Passionate about large-scale data processing and operational excellence, I have a rich international
+                    background at the crossroads of technical direction, teaching, and R&D.
+                </div>
+            </header>
+
+            <h2>Professional Experience</h2>
+
+            <!-- Role 1 -->
+            <div class="experience-item">
+                <div class="job-header">
+                    <span class="job-title">Technical Lead & Architect</span>
+                    <span class="company-name">Agence du Numérique en Santé (ANS)</span>
+                </div>
+                <div class="job-date">Feb. 2023 – Present | Paris, France</div>
+                <div class="job-desc">
+                    <ul>
+                        <li><strong>Technical Leadership:</strong> Responsible for the architectural vision for critical
+                            national projects (FINESS, RIPSC). Definition and application of microservices and DDD architecture
+                            rules.</li>
+                        <li><strong>Coordination & Management:</strong> Steering internal stakeholders (Product Owners, Project
+                            Managers) and coordinating external vendors and subcontractors to ensure strategic alignment and
+                            deadlines.</li>
+                        <li><strong>Standardization:</strong> Creating a best practices encyclopedia to standardize deliverables
+                            and capitalize on feedback (Knowledge Management).</li>
+                        <li><strong>Security & Compliance:</strong> Leading security compliance work (EBIOS, ANS homologation)
+                            guaranteeing the protection of sensitive data.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Role 2 -->
+            <div class="experience-item">
+                <div class="job-header">
+                    <span class="job-title">Project Manager - Scrum Master</span>
+                    <span class="company-name">Plug and Plate (Freelance)</span>
+                </div>
+                <div class="job-date">Oct. 2021 – Dec. 2022 | Paris Region</div>
+                <div class="job-desc">
+                    <ul>
+                        <li><strong>Agile Steering:</strong> Complete management of the development cycle (SDLC) of web
+                            solutions for the restaurant industry using Scrum methodology.</li>
+                        <li><strong>Product Strategy:</strong> Scoping business needs, writing User Stories, and prioritizing the
+                            Backlog to maximize business value.</li>
+                        <li><strong>Team Coaching:</strong> Mentoring development teams, facilitating rituals, and organizing
+                            acceptance testing (UAT).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Role 3 -->
+            <div class="experience-item">
+                <div class="job-header">
+                    <span class="job-title">IT Production Director / Tech Lead</span>
+                    <span class="company-name">Testamento (Contrat Facil)</span>
+                </div>
+                <div class="job-date">Oct. 2017 – Jan. 2020 | Gentilly, France</div>
+                <div class="job-desc">
+                    <ul>
+                        <li><strong>Transformation:</strong> Migration towards microservices architecture and industrialization
+                            (CI/CD).</li>
+                        <li><strong>Management:</strong> Implementing Scrum and supervising external service providers.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Role 4 + 5 Combined (Research Period) -->
+            <div class="experience-item">
+                <div class="job-header">
+                    <span class="job-title">Cloud Engineer & R&D Researcher</span>
+                    <span class="company-name">IMT Sud-Paris / CNRS</span>
+                </div>
+                <div class="job-date">Oct. 2011 – Sept. 2017 | Evry, France</div>
+                <div class="job-desc">
+                    <ul>
+                        <li><strong>Cloud (2016-17):</strong> Cloud infrastructure consolidation, datacenter relocation,
+                            documentation centralization.</li>
+                        <li><strong>PhD R&D (2011-14):</strong> Designing IoT algorithms, data quality management (QoC) &
+                            Privacy. Java/Eclipse.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Role 6: Missing Link -->
+            <div class="experience-item">
+                <div class="job-header">
+                    <span class="job-title">Software Development Engineer</span>
+                    <span class="company-name">TELECOM SudParis</span>
+                </div>
+                <div class="job-date">Mar. 2011 – Sept. 2011 | France</div>
+                <div class="job-desc">
+                    <ul>
+                        <li><strong>European Project "CompatibleOne":</strong> Development of the "pyOrbac" application
+                            (Python) and "xOrbac DSL" (XML/XSD) for unified security policy management.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>International Experience (Venezuela)</h2>
+
+            <!-- Role 7 -->
+            <div class="experience-item">
+                <div class="job-header">
+                    <span class="job-title">Project Manager</span>
+                    <span class="company-name">Tagua Center</span>
+                </div>
+                <div class="job-date">Nov. 2004 – Sept. 2009 | Venezuela</div>
+                <div class="job-desc">
+                    <ul>
+                        <li><strong>Coordination:</strong> Management of an internal team and service providers for
+                            administrative and reservation systems.</li>
+                        <li><strong>Full Cycle:</strong> Needs analysis, specifications, planning, budgeting, and deployment.
+                        </li>
+                        <li><strong>Stack:</strong> MS Project, Visual Basic, MySQL, PHP, HTML.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Role 8 -->
+            <div class="experience-item">
+                <div class="job-header">
+                    <span class="job-title">Solutions Analyst Designer</span>
+                    <span class="company-name">Zurich Insurance Company</span>
+                </div>
+                <div class="job-date">Dec. 2000 – Nov. 2004 | Venezuela</div>
+                <div class="job-desc">
+                    <ul>
+                        <li>
+                            <strong>AS400 / SAP Interfaces:</strong>
+                            Design and development of the flow interface, deployed in several Latin American subsidiaries.
+                        </li>
+                        <li>
+                            <strong>Bancassurance:</strong>
+                            Technical project planning and steering, writing specifications, and coordinating external teams
+                            based in the Brazilian subsidiary.
+                        </li>
+                        <li>
+                            <strong>DB Admin (SQL Server):</strong>
+                            Administration, performance optimization, security management, and backups.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Role 9 & 10 Compact -->
+            <div class="experience-item">
+                <div class="job-header">
+                    <span class="job-title">Early Experience</span>
+                    <span class="company-name">Univ. Nueva Esparta & Manapro</span>
+                </div>
+                <div class="job-date">1998 – 2001 | Venezuela</div>
+                <div class="job-desc">
+                    <ul>
+                        <li><strong>Professor (2000-01):</strong> Teaching "Software Development" for engineers (3rd year).
+                        </li>
+                        <li><strong>Analyst Developer (1998-00):</strong> Dev VB/DB applications for banks and insurance.
+                            Quality audit.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+</body>
+
+</html>
