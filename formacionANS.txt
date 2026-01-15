@@ -1,3 +1,17 @@
+Action	Période de réalisation	Intitulé de la formation	Formation retenue / suivie	Début de session	Durée
+PDC - 2025	Sensibilisation à la prévention du harcèlement, agissements sexistes & comportements inappropriés	Sensibilisation à la prévention du harcèlement, agissements sexistes & comportements inappropriés	19/11/2025	1h (0j)
+PDC - 2025	Sensibilisation à la sécurité incendie	Sensibilisation à la sécurité incendie	05/05/2025	0.5h (0j)
+2024	Elastic Observability Engineer	Elastic Observability Engineer	27/11/2024	14h (2j)
+2024	Elastic Observability Engineer	Elastic Observability Engineer	06/11/2024	14h (2j)
+2024	Optimiser son temps ses priorités sans stress	Optimiser son temps ses priorités sans stress	02/12/2024	14h (2j)
+2024	Sauveteur secouriste du travail (SST)	Sauveteur secouriste du travail (SST)	24/09/2024	14h (2j)
+2024	Atelier Fresque du numérique	Atelier Fresque du numérique	05/11/2024	3.5h (0j)
+2024	Développer des Web Services en Java	Développer des Web Services en Java	17/06/2024	21h (3j)
+2024	Améliorer sa communication dans ses relations professionnelles	Améliorer sa communication dans ses relations professionnelles	30/01/2024	14h (2j)
+2023	Webinaire 4 : Terminer une réunion en beauté !	Webinaire 4 : Terminer une réunion en beauté !	01/12/2023	1h (0j)
+2023	Webinaire 1 : Décider et concevoir une réunion : se poser les bonnes questions	Webinaire 1 : Décider et concevoir une réunion : se poser les bonnes questions	10/11/2023	1h (0j)
+2022	Manager une équipe - niveau 1	Manager une équipe - niveau 1	17/10/2023	21h (3j)
+---
 Stagiaire MACHARA MARQUEZ Samer (DEM-4587)
 Formation Sensibilisation à la prévention du harcèlement, agissements sexistes & comportements inappropriés
 Session Session n°00608 du 19/11/2025
@@ -88,4 +102,73 @@ Session Session n°00287 du 17/10/2023 au 19/10/2023
 Date de début de la session 17/10/2023
 Date de fin de la session 19/10/2023
 Organisme de formation CEGOS
+---
+Formation à mettre en oeuvre
+
+Formation catalogue demandée 	Atelier Fresque du numérique
+Besoin de formation 	
+Thématique / axe liée à la demande 	Développement durable
+Organisation prévue 	Intra-entreprise
+Intitulé de la formation demandée 	Atelier Fresque du numérique
+Organisme de formation prévu 	SOUTENABLE
+Intitulé de l'organisme 	
+Programme	
+Heures prévues	3,50
+Délai de réalisation	
+Objectifs	
+Session retenue
+
+Session retenue / suivie 	Session n°00392 du 05/11/2024
+Date de début de la session	05/11/2024
+Date de fin de la session	05/11/2024
+Durée 	3,50
+Statut de la demande
+
+Statut	Stagiaire présent
+---
+Formation à mettre en oeuvre
+
+Formation catalogue demandée 	Sensibilisation à la sécurité incendie
+Besoin de formation 	
+Thématique / axe liée à la demande 	Sécurité des personnes / Secourisme
+Organisation prévue 	Intra-entreprise
+Intitulé de la formation demandée 	Sensibilisation à la sécurité incendie
+Organisme de formation prévu 	
+Intitulé de l'organisme 	
+Programme	 
+Heures prévues	0,50
+Délai de réalisation	
+Objectifs	
+Session retenue
+
+Session retenue / suivie 	Session n°00598 du 05/05/2025 au 13/06/2025
+Date de début de la session	05/05/2025
+Date de fin de la session	13/06/2025
+Durée 	0,50
+Statut de la demande
+
+Statut	Stagiaire présent
+---
+Formation à mettre en oeuvre
+
+Formation catalogue demandée 	Optimiser son temps ses priorités sans stress
+Besoin de formation 	
+Thématique / axe liée à la demande 	Efficacité professionnelle
+Organisation prévue 	Intra-entreprise
+Intitulé de la formation demandée 	Optimiser son temps ses priorités sans stress
+Organisme de formation prévu 	Efficior
+Intitulé de l'organisme 	Efficior
+Programme	 
+Heures prévues	14,00
+Délai de réalisation	
+Objectifs	
+Session retenue
+
+Session retenue / suivie 	Session n°00457 du 02/12/2024 au 03/12/2024
+Date de début de la session	02/12/2024
+Date de fin de la session	03/12/2024
+Durée 	14,00
+Statut de la demande
+
+Statut	Stagiaire présent
 ---
